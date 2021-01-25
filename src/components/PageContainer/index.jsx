@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import classNames from "classnames";
+import { HelmetProvider, Helmet } from "react-helmet-async";
+
+import { DEFAULT_TITLE } from "@/constants";
 
 import Menu from "./Menu";
 import styles from "./index.module.less";
 
-const PageContainer = ({ className = "", children }) => {
+const PageContainer = ({ title = DEFAULT_TITLE, className = "", children }) => {
   const [menuVisible, setMenuVisible] = useState(false);
   const pageContainerClass = classNames(styles.pageContainer, className);
   const onOpenMenu = () => {
@@ -15,11 +18,17 @@ const PageContainer = ({ className = "", children }) => {
     setMenuVisible(false);
   };
   return (
-    <div className={pageContainerClass}>
-      <div onClick={onOpenMenu}>Switch</div>
-      <div className={styles.pageContainerContent}>{children}</div>
-      <Menu visible={menuVisible} onClose={onCloseMenu} />
-    </div>
+    <HelmetProvider>
+      <div className={pageContainerClass}>
+        <Helmet>
+          <title>{title}</title>
+          <link rel="canonical" href="https://www.tacobell.com/" />
+        </Helmet>
+        <div onClick={onOpenMenu}>Switch</div>
+        <div className={styles.pageContainerContent}>{children}</div>
+        <Menu visible={menuVisible} onClose={onCloseMenu} />
+      </div>
+    </HelmetProvider>
   );
 };
 

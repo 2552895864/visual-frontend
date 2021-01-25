@@ -1,14 +1,15 @@
 import React from "react";
+import { PageContainer } from "@/components";
 import { RadialBar, Area, HorizontalBar } from "@/components";
 
 const PageTwo = () => {
   return (
-    <div>
+    <PageContainer>
       <div>Page2</div>
       <RadialBar />
       <Area />
       <HorizontalBar />
-    </div>
+    </PageContainer>
   );
 };
 
