@@ -5,6 +5,7 @@ import { HelmetProvider, Helmet } from "react-helmet-async";
 import { DEFAULT_TITLE } from "@/constants";
 
 import Menu from "./Menu";
+import Header from "./Header";
 import styles from "./index.module.less";
 
 const PageContainer = ({ title = DEFAULT_TITLE, className = "", children }) => {
@@ -22,9 +23,8 @@ const PageContainer = ({ title = DEFAULT_TITLE, className = "", children }) => {
       <div className={pageContainerClass}>
         <Helmet>
           <title>{title}</title>
-          <link rel="canonical" href="https://www.tacobell.com/" />
         </Helmet>
-        <div onClick={onOpenMenu}>Switch</div>
+        <Header title={title} onClickMenuTrigger={onOpenMenu} />
         <div className={styles.pageContainerContent}>{children}</div>
         <Menu visible={menuVisible} onClose={onCloseMenu} />
       </div>

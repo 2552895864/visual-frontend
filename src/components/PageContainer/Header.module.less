@@ -1,0 +1,96 @@
+.header {
+  width      : 100%;
+  position   : absolute;
+  top        : 0px;
+  display    : flex;
+  font-family: PangMenZhengDao-3;
+
+  .sideCommon {
+    width            : 508px;
+    height           : 64px;
+    background-repeat: no-repeat;
+    background-size  : cover;
+  }
+
+  .datetime {
+    .sideCommon;
+    background-image: url("~@/assets/pageContainer/headerLeft.png");
+
+    .dateTimeLabel {
+      font-weight: 400;
+      color      : #FFFFFF;
+      margin-left: 40px;
+    }
+
+    .time {
+      .dateTimeLabel;
+      font-size  : 20px;
+      line-height: 14px;
+      opacity    : 0.9;
+      margin-top : 14px;
+    }
+
+    .date {
+      .dateTimeLabel;
+      font-size  : 16px;
+      line-height: 12px;
+      opacity    : 0.6;
+      margin-top : 7px;
+    }
+  }
+
+  .menuTrigger {
+    .sideCommon;
+    background-image: url("~@/assets/pageContainer/headerRight.png");
+
+    .triggerIcon {
+      cursor          : pointer;
+      float           : right;
+      width           : 32px;
+      height          : 32px;
+      margin-right    : 20px;
+      margin-top      : 16px;
+      background-image: url("~@/assets/pageContainer/headerIcon.png");
+    }
+
+    .triggerText {
+      margin-top  : 13px;
+      margin-right: 55px;
+      color       : #FFFFFF;
+      font-weight : 400;
+      text-align  : left;
+      float       : right;
+
+      .triggerName {
+        line-height: 15px;
+        font-size  : 20px;
+        opacity    : 0.9;
+      }
+
+      .triggerEnName {
+        line-height: 12px;
+        font-size  : 16px;
+        opacity    : 0.6;
+        margin-top : 7px;
+      }
+    }
+  }
+
+  .title {
+    width            : 904px;
+    height           : 70px;
+    text-align       : center;
+    background-image : url("~@/assets/pageContainer/headerTitle.png");
+    background-repeat: no-repeat;
+    background-size  : cover;
+
+    span {
+      display    : inline-block;
+      color      : #ffffff;
+      font-weight: 400;
+      font-size  : 46px;
+      line-height: 34px;
+      margin     : 18px auto;
+    }
+  }
+}

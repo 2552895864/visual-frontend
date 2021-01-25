@@ -1,28 +1,55 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Drawer } from "antd";
+import classNames from "classnames";
+import delay from "lodash/delay";
 import { withRouter } from "react-router-dom";
 
 import menu from "@/routes/routes";
+import { MENU_TITLE } from "@/constants";
 
 import styles from "./Menu.module.less";
 
-const Menu = ({ onClose, visible, history: { push } }) => {
+const Menu = ({
+  onClose,
+  visible,
+  history: { push },
+  location: { pathname },
+}) => {
+  const [currentVisible, setCurrentVisible] = useState(visible);
   const onChangePage = (pathName) => {
-    push(pathName);
+    setCurrentVisible(false);
+    delay(() => {
+      push(pathName);
+    }, 500);
   };
+
+  useEffect(() => {
+    setCurrentVisible(visible);
+  }, [visible]);
   return (
     <Drawer
       className={styles.pageContainerMenu}
       placement="right"
+      width={323}
       closable={false}
       onClose={onClose}
-      visible={visible}
+      visible={currentVisible}
       headerStyle={{ display: "none" }}
+      bodyStyle={{ padding: 0 }}
       getContainer={false}
     >
-      <ul>
+      <div className={styles.title}>
+        <div className={styles.titleContent}>{MENU_TITLE}</div>
+      </div>
+      <ul className={styles.menuList}>
         {menu.map((m) => (
-          <li key={`${m.path}_${m.name}`} onClick={() => onChangePage(m.path)}>
+          <li
+            className={classNames(styles.menuItem, {
+              [styles.menuItemSelected]: pathname === m.path,
+            })}
+            key={`${m.path}_${m.name}`}
+            onClick={() => onChangePage(m.path)}
+          >
             {m.name}
           </li>
         ))}
