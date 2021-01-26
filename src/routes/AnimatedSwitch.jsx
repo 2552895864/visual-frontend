@@ -16,7 +16,7 @@ const AnimatedSwitch = withRouter(({ location, children, history }) => {
         React.cloneElement(child, { classNames: ANIMATION_MAP[history.action] })
       }
     >
-      <CSSTransition timeout={1500} key={location.pathname}>
+      <CSSTransition timeout={500} key={location.pathname}>
         <Switch location={location}>{children}</Switch>
       </CSSTransition>
     </TransitionGroup>
