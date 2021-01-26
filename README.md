@@ -32,6 +32,11 @@
 - Bizcharts
 - eCharts
 
+### 页面过渡动画
+
+- [一次 react-router + react-transition-group 实现转场动画的探索](https://juejin.cn/post/6844903818073899022#heading-6)
+- [PAGE TRANSITIONS CSS 动画样式资源](https://tympanus.net/Development/PageTransitions/) -> [github](https://github.com/codrops/PageTransitions)
+
 #### 项目内部组件库
 
 在 src/components 下添加项目级可复用组件，最终统一汇入 components/index.js 中
@@ -98,7 +103,7 @@ app.use(
 
 #### UI 组件库
 
-Antd 
+Antd
 
 #### 工具库
 

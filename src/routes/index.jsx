@@ -1,15 +1,16 @@
 import React from "react";
-import { HashRouter, Route, Switch } from "react-router-dom";
+import { HashRouter, Route } from "react-router-dom";
+import AnimatedSwitch from "./AnimatedSwitch";
 import routes from "./routes";
 
 export default function Routes() {
   return (
     <HashRouter>
-      <Switch>
+      <AnimatedSwitch>
         {routes.map((route) => (
-          <Route key={route.path} {...route} />
+          <Route exact key={route.path} {...route} />
         ))}
-      </Switch>
+      </AnimatedSwitch>
     </HashRouter>
   );
 }

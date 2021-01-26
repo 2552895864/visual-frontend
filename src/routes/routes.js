@@ -3,8 +3,7 @@ import PageTwo from "@/pages/page2";
 
 const routes = [
   {
-    path: "/",
-    exact: true,
+    path: "/",   
     name: "主页",
     component: PageOne,
   },
