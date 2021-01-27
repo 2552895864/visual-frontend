@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Router from "@/routes";
+import Main from "@/routes";
 import "./global.less";
 
-ReactDOM.render(<Router />, document.getElementById("root"));
+ReactDOM.render(<Main />, document.getElementById("root"));
