@@ -10,7 +10,7 @@ const useLocale = () => {
   const [lang, setLang] = useState("zh-CN");
   intl.init({
     warningHandler: (msg, detail) => {
-      //注意该函数开发环境有，打包后就没有了
+      //开发环境有
       console.log(`${msg} ${detail}`);
     },
     currentLocale: lang,
