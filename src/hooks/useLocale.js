@@ -2,8 +2,8 @@ import { useState } from "react";
 import intl from "react-intl-universal";
 
 const locales = {
-  "en-US": require("@/locales/en.json"),
-  "zh-CN": require("@/locales/zh.json"),
+  "en-US": require("@/locales/en-US"),
+  "zh-CN": require("@/locales/zh-CN"),
 };
 
 const useLocale = () => {
