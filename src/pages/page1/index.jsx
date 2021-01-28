@@ -9,7 +9,7 @@ const PageOne = () => {
     <PageContainer>
       <div className={styles.text}>{intl.get("pageOneTitle")}</div>
       <div className={styles.text}>{intl.get("normal")}</div>
-      <Button type="primary">Test</Button>
+      <Button type="primary">TestButton</Button>
     </PageContainer>
   );
 };
