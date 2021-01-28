@@ -14,7 +14,9 @@
 - components 项目通用组件
 - config 全局配置项
 - constants 常量
+- context React上下文
 - hooks 自定义 hooks
+- locales 国际化文件
 - pages 页面级组件
 - routes 路由文件
 - service 顶层 service
