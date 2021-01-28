@@ -25,6 +25,7 @@ UI 框架为 `React`, 使用`create-react-app`为基本脚手架进行搭建，�
 - pages 页面级组件
 - routes 路由文件
 - service 顶层 service
+- styles 样式文件（全局/公共）
 - utils 工具函数
 - index.js 入口文件
 - setupProxy.js 代理文件
