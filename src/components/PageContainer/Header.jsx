@@ -1,7 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
-import { LangContext } from "@/context/locale";
+import intl from "react-intl-universal";
 import moment from "moment";
-import { MENU_TRIGGER_NAME, MENU_TRIGGER_EN_NAME } from "@/constants";
+
+import { LangContext } from "@/context/locale";
+import {
+  MENU_TRIGGER_NAME,
+  MENU_TRIGGER_EN_NAME,
+  LANG_enUS,
+  LANG_zhCN,
+  LANG_EN_US_VALUE,
+  LANG_ZH_CN_VALUE,
+} from "@/constants";
 import styles from "./Header.module.less";
 
 const DateTime = () => {
@@ -41,8 +50,8 @@ const MenuTrigger = ({ onClick }) => {
       </div>
       <div className={styles.triggerIcon} onClick={onClick}></div>
       <select className="select" onChange={handleSite} value={lang}>
-        <option value="zh-CN">中文</option>
-        <option value="en-US">English</option>
+        <option value={LANG_EN_US_VALUE}>{LANG_enUS}</option>
+        <option value={LANG_ZH_CN_VALUE}>{LANG_zhCN}</option>
       </select>
     </div>
   );
@@ -53,7 +62,7 @@ const Header = ({ title, onClickMenuTrigger }) => {
     <header className={styles.header}>
       <DateTime />
       <div className={styles.title}>
-        <span>{title}</span>
+        <span>{intl.get("common.title")}</span>
       </div>
       <MenuTrigger onClick={onClickMenuTrigger} />
     </header>

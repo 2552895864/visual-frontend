@@ -1,13 +1,13 @@
 import { useState } from "react";
 import intl from "react-intl-universal";
-
+import { LANG_ZH_CN_VALUE, LANG_EN_US_VALUE } from "@/constants";
 const locales = {
-  "en-US": require("@/locales/en-US"),
-  "zh-CN": require("@/locales/zh-CN"),
+  [LANG_EN_US_VALUE]: require("@/locales/en-US"),
+  [LANG_ZH_CN_VALUE]: require("@/locales/zh-CN"),
 };
 
 const useLocale = () => {
-  const [lang, setLang] = useState("zh-CN");
+  const [lang, setLang] = useState(LANG_ZH_CN_VALUE);
   intl.init({
     warningHandler: (msg, detail) => {
       //开发环境有
