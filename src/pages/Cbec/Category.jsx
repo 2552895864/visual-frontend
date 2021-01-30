@@ -7,7 +7,6 @@ const Category = () => {
   const box1Ref = useRef();
   const box2Ref = useRef();
   const [initial, setInitial] = useState(false);
-  let interval;
 
   function switchData(active, inActive) {
     if (!active.current || !inActive.current) {
@@ -33,6 +32,7 @@ const Category = () => {
   useEffect(() => {
     box1Ref.current.style.left = 0;
     // box1Ref.current.classList.add('table-out');
+    let interval;
     if (!initial) {
       interval = setInterval(() => {
         switchData(box1Ref, box2Ref);
@@ -50,7 +50,7 @@ const Category = () => {
       }
       index++;
     };
-  });
+  }, [initial]);
 
   return (
     <ModuleContainer

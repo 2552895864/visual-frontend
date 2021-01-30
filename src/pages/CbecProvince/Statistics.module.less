@@ -1,0 +1,101 @@
+.statistics {
+  width                : 100%;
+  position             : absolute;
+  bottom               : 85px;
+  // display        : flex;
+  // justify-content: space-around;
+  display              : grid;
+  grid-template-columns: repeat(5, auto);
+
+  .badgeContainer {
+    position       : relative;
+    color          : #d9fcff;
+    // display     : inline-block;
+    // width       : 19%;
+    text-align     : center;
+    border-right   : 0.25rem transparent solid;
+    border-image   : linear-gradient(to bottom, #ffffff00, #2ba8eb, #ffffff00) 3;
+
+    .icon {
+      z-index         : 100;
+      // display: inline-block;
+      // border-radius: 50%;
+      width           : 63px;
+      height          : 63px;
+      position        : relative;
+
+    }
+
+    .text {
+      margin-top : 8px;
+      font-family: Source Han Sans CN;
+      color      : #D9FCFF;
+      line-height: 9px;
+
+      span:nth-child(1) {
+        font-size  : 25px;
+        font-weight: bold;
+      }
+
+      span:nth-child(2) {
+        font-size  : 17px;
+        font-weight: 400;
+      }
+    }
+
+    .ring {
+      position         : absolute;
+      width            : 68px;
+      height           : 68px;
+      border-radius    : 34px;
+      background-image : -webkit-linear-gradient(rgba(255, 136, 0, 0), #00a6ff);
+      right            : 26.5%;
+      top              : -3.1px;
+      z-index          : 1;
+      animation        : turn 5s linear infinite;
+      -webkit-animation: turn 5s linear infinite;
+
+      .ringInner {
+        background-color: rgba(0, 0, 0, 0.678);
+        width           : 63px;
+        height          : 63px;
+        border-radius   : 31.5px;
+        position        : relative;
+        transform       : translate(0.1875rem, 0.125rem);
+      }
+    }
+
+  }
+
+  .lastBadge {
+    border: none
+  }
+}
+
+@-webkit-keyframes turn {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes turn {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
