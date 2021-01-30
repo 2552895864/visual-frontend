@@ -1,0 +1,15 @@
+<svg width="300" height="300" viewPort="0 0 120 120" version="1.1"    
+xmlns="http://www.w3.org/2000/svg">   
+	<filter id="p1" x="" y="" width="200%" height="200%">
+    <feOffset result="offOut" in="SourceGraphic" dx="0" dy="0" />
+    <feGaussianBlur result="blurOut" in="offOut" stdDeviation="13" />
+    <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+  </filter>
+  <g id="he">
+    <polygon 
+      points="226.60254037844388,190 140,240 53.39745962155615,190.00000000000003 53.39745962155612,90.00000000000003 139.99999999999997,40 226.60254037844388,90.00000000000003"
+      stroke="#f7eb35" stroke-width="10" fill="rgba(121,0,121,0)"
+      filter="url(#p1)"
+			   /> 
+  </g>
+</svg>
