@@ -14,9 +14,11 @@ function SquareGrid({ data = defaultData }) {
     <div className={styles.container}>
       {data.map((item, index) => {
         if (index === 1 || index === 2) {
-          return <Statistic {...item} valueClassName={styles.gold} />;
+          return (
+            <Statistic {...item} key={index} valueClassName={styles.gold} />
+          );
         }
-        return <Statistic {...item} />;
+        return <Statistic {...item} key={index} />;
       })}
     </div>
   );
