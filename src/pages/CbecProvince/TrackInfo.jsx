@@ -31,17 +31,23 @@ const TrackInfo = ({ statusInfo, statusItemMode }) => {
       titleEn="Traceability information"
       className={styles.trackInfo}
     >
-      <LabelCard label="运单号" value={statusInfo.num} mode={statusItemMode} />
-      <div className={styles.division}></div>
-      <div className={styles.grid}>
-        {showOrder.map((item) => (
-          <LabelCard
-            key={item.name}
-            label={item.label}
-            value={statusInfo[item.name]}
-            mode={statusItemMode}
-          />
-        ))}
+      <div className={styles.trackInfoLayout}>
+        <LabelCard
+          label="运单号"
+          value={statusInfo.num}
+          mode={statusItemMode}
+        />
+        <div className={styles.division}></div>
+        <div className={styles.grid}>
+          {showOrder.map((item) => (
+            <LabelCard
+              key={item.name}
+              label={item.label}
+              value={statusInfo[item.name]}
+              mode={statusItemMode}
+            />
+          ))}
+        </div>
       </div>
     </ModuleContainer>
   );
