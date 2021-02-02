@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { setArrayValueWithoutUndefined } from "@/utils/utils";
 import { useInterval } from "@/hooks";
 import FlipperCard from "../FlipperCard";
 import styles from "./index.module.less";
@@ -8,9 +9,9 @@ function CumulativeValue({ value = 27663528 }) {
   const ref = useRef([]);
   const refs = ref.current;
   useEffect(() => {
-    const valueStrs = `${val}`.split("");
+    const valueStrs = `${value}`.split("");
     refs.forEach((item, index) => item.setFront(valueStrs[index]));
-  }, []);
+  }, [value, refs]);
   const tick = () => {
     const newVal = val + Math.round(Math.random() * 10000);
     const FrontStrs = `${val}`.split("");
@@ -38,7 +39,9 @@ function CumulativeValue({ value = 27663528 }) {
               );
             return (
               <FlipperCard
-                ref={(element) => (ref.current[ref.current.length] = element)}
+                ref={(element) => {
+                  setArrayValueWithoutUndefined(element, index, refs);
+                }}
                 key={index}
               ></FlipperCard>
             );

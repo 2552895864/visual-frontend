@@ -1,0 +1,187 @@
+.container {
+  position: relative;
+  height: 284px;
+  color: white;
+}
+
+.line {
+  position: absolute;
+  bottom: 26px;
+  width: 668px;
+  height: 2px;
+  background: #2ba8eb;
+  border-radius: 1px;
+}
+
+.point {
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 9px;
+  height: 9px;
+  background-image: url("~@/assets/pageContainer/defaultBackgroundImage.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-clip: padding-box;
+  border: 2px solid #2ba8eb;
+  border-radius: 50%;
+  z-index: 100;
+  &::before {
+    content: "";
+    transition: 3s all ease-out;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+}
+
+.label {
+  position: absolute;
+  opacity: 0;
+  transition: 3s opacity ease-out;
+  width: 40px;
+  height: 19px;
+  line-height: 19px;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 20px);
+  font-size: 20px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.position1 {
+  left: 6%;
+}
+
+.position2 {
+  left: 27%;
+}
+
+.position3 {
+  left: 48.5%;
+}
+
+.position4 {
+  left: 70%;
+}
+
+.position5 {
+  left: 91.5%;
+}
+
+.point1 {
+  .point();
+  .position1();
+  &::before {
+    width: 44px;
+    height: 48px;
+    background-image: url("~@/assets/cebcPort/申报.png");
+  }
+}
+
+.point2 {
+  .point();
+  .position2();
+  &::before {
+    width: 50px;
+    height: 46px;
+    background-image: url("~@/assets/cebcPort/托运.png");
+  }
+}
+
+.point3 {
+  .point();
+  .position3();
+  &::before {
+    width: 37px;
+    height: 41px;
+    background-image: url("~@/assets/cebcPort/审单.png");
+  }
+}
+
+.point4 {
+  .point();
+  .position4();
+  &::before {
+    width: 41px;
+    height: 47px;
+    background-image: url("~@/assets/cebcPort/查验.png");
+  }
+}
+
+.point5 {
+  .point();
+  .position5();
+  &::before {
+    width: 40px;
+    height: 47px;
+    background-image: url("~@/assets/cebcPort/放行.png");
+  }
+}
+
+.active .label {
+  opacity: 1;
+}
+
+.line::after {
+  content: "";
+  position: absolute;
+  z-index: 1000;
+  transition: 3s left ease-out;
+  top: 0;
+  transform: translate(-50%, -50%);
+  width: 17px;
+  height: 17px;
+  background: #2ba8eb;
+  border-radius: 50%;
+}
+
+.line-point-position1::after {
+  .position1();
+}
+
+.line-point-position2::after {
+  .position2();
+}
+
+.line-point-position3::after {
+  .position3();
+}
+
+.line-point-position4::after {
+  .position4();
+}
+
+.line-point-position5::after {
+  .position5();
+}
+
+.active1::before {
+  width: 66px;
+  height: 72px;
+}
+
+.active2::before {
+  width: 75px;
+  height: 69px;
+}
+
+.active3::before {
+  width: 55.5px;
+  height: 61.5px;
+}
+
+.active4::before {
+  width: 61.6px;
+  height: 70.5px;
+}
+
+.active5::before {
+  width: 60px;
+  height: 70.5px;
+}
