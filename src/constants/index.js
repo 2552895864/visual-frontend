@@ -11,3 +11,12 @@ export const LANG_enUS = "English";
 export const CBEC_PROVINCE_IMPORT = "import";
 export const CBEC_PROVINCE_EXPORT = "export";
 export const CBEC_PROVINCE_RANK_DEFAULT_WIDTH = 388;
+
+export const COLOR_LIST = [
+  "#00C8FC",
+  "#476DF4",
+  "#F1CB34",
+  "#E87873",
+  "#93ED67",
+  "#EA64EC",
+];

@@ -3,6 +3,19 @@
   width   : 540px;
   position: relative;
 
+  .statusLayout {
+    margin-top: 18px;
+
+    .slider {
+      height    : 366px;
+      overflow-y: auto;
+    }
+
+    .slider::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+
   .itemCardContainer {
     font-size      : 18px;
     display        : flex; //test
@@ -25,15 +38,6 @@
     border-radius   : 10px;
     text-align      : left;
     border-bottom   : 0rem;
-  }
-
-  .slider {
-    height    : 366px;
-    overflow-y: auto;
-  }
-
-  .slider::-webkit-scrollbar {
-    width: 0;
   }
 
   .arrow {
