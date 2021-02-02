@@ -40,7 +40,9 @@ function CumulativeValue({ value = 27663528 }) {
             return (
               <FlipperCard
                 ref={(element) => {
-                  setArrayValueWithoutUndefined(element, index, refs);
+                  if (!refs[index]) {
+                    setArrayValueWithoutUndefined(element, index, refs);
+                  }
                 }}
                 key={index}
               ></FlipperCard>
