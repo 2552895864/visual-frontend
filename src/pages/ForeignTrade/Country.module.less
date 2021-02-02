@@ -2,4 +2,45 @@
   height    : 310px;
   width     : 100%;
   margin-top: 40px;
+
+  .countryLayout {
+    margin-top           : 19px;
+    display              : grid;
+    grid-template-columns: repeat(1, auto);
+    grid-template-rows   : repeat(5, auto);
+    grid-row-gap         : 20px;
+  }
+
+  .countryItem {
+    display    : flex;
+    align-items: center;
+    position   : relative;
+
+    .countryIcon {
+      margin-right: 30px;
+
+      .countryIconContent {
+        border       : 3px solid white;
+        border-radius: 16px;
+      }
+    }
+
+    .countryName {
+      font-size  : 20px;
+      font-family: Source Han Sans CN;
+      font-weight: bold;
+      color      : #FFFFFF;
+      opacity    : 0.8;
+    }
+
+    .value {
+      position   : absolute;
+      right      : 0px;
+      font-size  : 20px;
+      font-family: PangMenZhengDao-3;
+      font-weight: 400;
+      color      : #FFFFFF;
+      opacity    : 0.8;
+    }
+  }
 }

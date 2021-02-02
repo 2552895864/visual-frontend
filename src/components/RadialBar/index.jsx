@@ -26,19 +26,27 @@ const defaultColors = {
 };
 
 const initChart = (
-  { data = defaultData, colors = defaultColors, lineWidth = 10 },
+  {
+    data = defaultData,
+    colors = defaultColors,
+    lineWidth = 10,
+    padding = 8,
+    innerRadius = 0.3,
+    radius = 1,
+  },
   id
 ) => {
   const chart = new Chart({
     container: id,
     autoFit: true,
-    padding: 50,
+    padding,
   });
 
   chart.data(data);
 
   chart.coordinate("theta", {
-    innerRadius: 0.2,
+    innerRadius,
+    radius,
   });
 
   chart.axis("term", {
@@ -97,6 +105,9 @@ const initChart = (
  * @param {String} props.className 容器的 className ，默认 width: 400px;height: 400px;
  * @param {Array} props.data 图表数据，Array Item 参考： { term: "test3", count: 9, max: 100 }
  * @param {Object} props.colors 指定 Array Item 对应颜色，参考：
+ * @param {Array|Number} props.padding 容器padding，顺序为：上、右、下、左，默认值：8
+ * @param {Number} props.innerRadius 内径 innerRadius 默认{0.3}
+ * @param {Number} props.radius 外径 radius 默认{1}
  * {
     test1: {
       backgroundColor: "rgba(104,233,252,.5)",

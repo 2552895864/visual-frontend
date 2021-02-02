@@ -6,6 +6,8 @@ import Category from "./Category";
 import CbecData from "./CbecData";
 import Country from "./Country";
 import TradeValue from "./TradeValue";
+import MainStatistics from "./MainStatistics";
+import DetailStatistics from "./DetailStatistics";
 import styles from "./index.module.less";
 
 const ForeignTrade = () => {
@@ -17,7 +19,10 @@ const ForeignTrade = () => {
           <Country />
           <Business />
         </div>
-        <div className={styles.middle}></div>
+        <div className={styles.middle}>
+          <MainStatistics />
+          <DetailStatistics />
+        </div>
         <div className={styles.right}>
           <TradeValue />
           <Category />

@@ -21,13 +21,16 @@ const initChart = (
     axisColor = "#20424C",
     lineColor = "#55FAFE",
     padding = [8, 8, 48, 64],
+    shape = 'line',
+    yAxisLabel = null,
+    xAxisLabel = null,
   },
   id
 ) => {
   const chart = new Chart({
     container: id,
     autoFit: true,
-    padding: 0,
+    padding,
   });
 
   chart.scale("Date", {
@@ -70,7 +73,8 @@ const initChart = (
     .color(`l(90) 0:${lineColor} 1:${axisColor}`)
     .style({
       fillOpacity: 0.1,
-    });
+    })
+    .shape(shape);
 
   // view2
   const view2 = chart.createView({
@@ -89,7 +93,7 @@ const initChart = (
       style: { stroke: axisColor, lineWidth: 3 },
     },
     grid: null,
-    label: {
+    label: yAxisLabel || {
       offset: 18,
       style: {
         fontSize: 20,
@@ -103,7 +107,7 @@ const initChart = (
       style: { stroke: axisColor, lineWidth: 3 },
     },
     tickLine: null,
-    label: {
+    label: xAxisLabel || {
       offset: 25,
       style: {
         fontSize: 20,
@@ -111,7 +115,7 @@ const initChart = (
       },
     },
   });
-  view2.line().color(lineColor).position("Date*value");
+  view2.line().color(lineColor).position("Date*value").shape(shape);
   view2.point().position("Date*value").color(lineColor).shape("circle");
 
   chart.removeInteraction("legend-filter"); // 关闭图例过滤交互
@@ -128,6 +132,9 @@ const initChart = (
  * @param {String} props.axisColor 坐标轴颜色，默认值：'#20424C'
  * @param {String} props.lineColor 折线颜色，默认值：'#55FAFE'
  * @param {Array} props.padding 容器padding，顺序为：上、右、下、左，默认值：[8, 8, 48, 64]
+ * @param {Object} props.yAxisLabel y轴Label配置项
+ * @param {Object} props.xAxisLabel x轴Label配置项
+ * @param {String} props.shape 线图支持的图形：line,dot,smooth, 默认line
  */
 
 function Area(props) {
