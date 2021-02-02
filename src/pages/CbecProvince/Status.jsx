@@ -88,28 +88,30 @@ const Status = ({
       titleEn="Import and export hot category"
       className={styles.status}
     >
-      <ItemCard
-        isHead={true}
-        item={{
-          type: "进口类型",
-          enterprise: "申报企业",
-          portName: "口岸名称",
-          status: "状态",
-        }}
-      />
-      <div className={styles.slider}>
-        <Slider {...settings}>
-          {dataSource.map((item, index) => (
-            <ItemCard
-              key={item.id}
-              item={item}
-              isHighlight={index === topIndex + 2}
-            />
-          ))}
-        </Slider>
-      </div>
-      <div className={arrowClass}>
-        <img src={arrow} alt="arrow" />
+      <div className={styles.statusLayout}>
+        <ItemCard
+          isHead={true}
+          item={{
+            type: "进口类型",
+            enterprise: "申报企业",
+            portName: "口岸名称",
+            status: "状态",
+          }}
+        />
+        <div className={styles.slider}>
+          <Slider {...settings}>
+            {dataSource.map((item, index) => (
+              <ItemCard
+                key={item.id}
+                item={item}
+                isHighlight={index === topIndex + 2}
+              />
+            ))}
+          </Slider>
+        </div>
+        <div className={arrowClass}>
+          <img src={arrow} alt="arrow" />
+        </div>
       </div>
     </ModuleContainer>
   );

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { message, notification } from "antd";
 
 const codeHandlers = {
   // 200: '服务器成功返回请求的数据。',
@@ -9,7 +10,7 @@ const codeHandlers = {
   400: async (response) => {
     const data = await response.data;
     const { message: msg = "系统错误" } = data;
-    // message.error(msg || "系统错误");
+    message.error(msg || "系统错误");
   },
   // 401: '用户没有权限（令牌、用户名、密码错误）。',
   401: () => {},
@@ -21,13 +22,12 @@ const codeHandlers = {
   500: async (response) => {
     const data = await response.data;
     const { message: msg = "系统错误" } = data;
-    // message.error(msg || "系统错误");
+    message.error(msg || "系统错误");
   },
   502: "网关错误。",
   503: "服务不可用，服务器暂时过载或维护。",
   504: "网关超时。",
 };
-
 
 class Request {
   constructor() {
@@ -71,10 +71,10 @@ class Request {
     if (response && response.status) {
       this.responseHandler(response);
     } else if (!response) {
-      // notification.error({
-      //   description: "您的网络发生异常，无法连接服务器",
-      //   message: "网络异常",
-      // });
+      notification.error({
+        description: "您的网络发生异常，无法连接服务器",
+        message: "网络异常",
+      });
     }
     return response;
   }
@@ -84,7 +84,7 @@ class Request {
     if (type === "string") {
       const errorText = codeHandler || response.statusText;
       const { status, url } = response;
-      // message.error(errorText);
+      message.error(errorText);
       console.error(` ${status}: ${url} ${errorText}`);
     } else if (type === "function") {
       codeHandler(response);

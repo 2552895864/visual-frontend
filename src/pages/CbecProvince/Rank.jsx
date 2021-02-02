@@ -108,9 +108,11 @@ const Rank = () => {
           className={item.className}
           extra={<RankRadio getType={item.getType} />}
         >
-          {item.data.map((item, index) => (
-            <RankItem key={item.name} dataSource={item} index={index} />
-          ))}
+          <div className={styles.rankLayout}>
+            {item.data.map((item, index) => (
+              <RankItem key={item.name} dataSource={item} index={index} />
+            ))}
+          </div>
         </ModuleContainer>
       ))}
     </Fragment>
