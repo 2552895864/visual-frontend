@@ -3,14 +3,14 @@ import React from "react";
 // import { PageContainer, SquareGrid, Table } from "@/components";
 import { PageContainer } from "@/components";
 // import { CumulativeValue, ProgressBar } from "./modules";
-import { ProgressBar } from "./modules";
-// import styles from "./index.module.less";
+import { EchartPie } from "./modules";
+import styles from "./index.module.less";
 
 const CebcPort = () => {
   return (
     <PageContainer>
       <div>
-        <ProgressBar></ProgressBar>
+        <EchartPie className={styles.pie}></EchartPie>
       </div>
     </PageContainer>
   );
