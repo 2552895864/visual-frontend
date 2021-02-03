@@ -60,7 +60,7 @@ const CebcPort = () => {
             key="口岸货值分布"
             title="口岸货值分布"
             titleEn="Distribution of value at the port"
-            placement="right"
+            placement="left"
             className={styles.distribution}
           >
             <EchartPie className={styles.pie}></EchartPie>
@@ -69,7 +69,7 @@ const CebcPort = () => {
             key="单量和货值变化趋势"
             title="单量和货值变化趋势"
             titleEn="Trends in volume and value"
-            placement="right"
+            placement="left"
             className={styles.trends}
           >
             <LineChart className={styles.line}></LineChart>
