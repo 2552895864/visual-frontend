@@ -20,15 +20,10 @@ const Business = () => {
       <div className={styles.areaLayout}>
         <Area
           className={styles.area}
-          xAxisLabel={{
-            ...axisLabelStyle,
-          }}
-          yAxisLabel={{
-            ...axisLabelStyle,
-          }}
+          axis={{ x: axisLabelStyle, y: axisLabelStyle }}
           padding={[8, 8, 18, 25]}
-          shape="smooth"
-          lineColor="#00B4F7"
+          shape={{ line: "smooth", area: "smooth" }}
+          areaColor={{ source: "#00B4F7", target: "#00B4F700" }}
         />
       </div>
     </ModuleContainer>

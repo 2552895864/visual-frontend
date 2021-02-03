@@ -31,7 +31,7 @@ const Category = ({ dataSource = data }) => {
     <ModuleContainer
       title="热销品类"
       titleEn="Hot selling category"
-      placement="right"
+      // placement="right"
       className={styles.category}
     >
       <div className={styles.categoryLayout}>
