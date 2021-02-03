@@ -14,45 +14,49 @@ const defaultData = [
   { Date: "2021-06-06", value: 500 },
 ];
 
+const defaultAxisConfig = {
+  x: {
+    showTitle: false,
+    title: "",
+    range: [0, 0.99],
+    color: "#20424C",
+    titleStyle: {
+      fill: "#E0FCFF",
+      fontSize: 15,
+      fontFamily: "SourceHanSansCN-Normal",
+      fontWeight: "400",
+    },
+    labelOffset: 25,
+    labelStyle: {
+      fontSize: 20,
+      fontWeight: "bold",
+    },
+  },
+  y: {
+    showTitle: false,
+    title: "货值",
+    range: [0, 0.95],
+    color: "#20424C",
+    titleStyle: {
+      fill: "#E0FCFF",
+      fontSize: 15,
+      fontFamily: "SourceHanSansCN-Normal",
+      fontWeight: "400",
+    },
+    labelOffset: 18,
+    labelStyle: {
+      fontSize: 20,
+      fontWeight: "bold",
+      fontFamily: "Microsoft YaHei",
+    },
+  },
+};
+
 const initChart = (
   {
     data = defaultData,
     multipleLines = [],
-    axis = {
-      x: {
-        showTitle: false,
-        title: "",
-        range: [0, 0.99],
-        color: "#20424C",
-        titleStyle: {
-          fill: "#E0FCFF",
-          fontSize: 15,
-          fontFamily: "SourceHanSansCN-Normal",
-          fontWeight: "400",
-        },
-        labelStyle: {
-          fontSize: 20,
-          fontWeight: "bold",
-        },
-      },
-      y: {
-        showTitle: false,
-        title: "货值",
-        range: [0, 0.95],
-        color: "#20424C",
-        titleStyle: {
-          fill: "#E0FCFF",
-          fontSize: 15,
-          fontFamily: "SourceHanSansCN-Normal",
-          fontWeight: "400",
-        },
-        labelStyle: {
-          fontSize: 20,
-          fontWeight: "bold",
-          fontFamily: "Microsoft YaHei",
-        },
-      },
-    },
+    axis = defaultAxisConfig,
     areaColor = { source: "#55FAFE", target: "#20424C" },
     padding = [8, 8, 48, 64],
     shape = { line: "line", area: "area" },
@@ -151,7 +155,7 @@ const initChart = (
             },
             grid: null,
             label: {
-              offset: 18,
+              offset: axis.y.labelOffset,
               style: {
                 ...axis.y.labelStyle,
               },
@@ -170,7 +174,7 @@ const initChart = (
             },
             tickLine: null,
             label: {
-              offset: 25,
+              offset: axis.x.labelOffset,
               style: {
                 ...axis.x.labelStyle,
               },
@@ -236,7 +240,7 @@ const initChart = (
       },
       grid: null,
       label: {
-        offset: 18,
+        offset: axis.y.labelOffset,
         style: {
           ...axis.y.labelStyle,
         },
@@ -255,7 +259,7 @@ const initChart = (
       },
       tickLine: null,
       label: {
-        offset: 25,
+        offset: axis.x.labelOffset,
         style: {
           ...axis.x.labelStyle,
         },

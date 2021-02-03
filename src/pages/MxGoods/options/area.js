@@ -5,6 +5,7 @@ export const axisConfig = {
     title: "",
     range: [0, 0.99],
     color: "rgba(254,244,235,0.6)",
+    labelOffset: 24,
     labelStyle: {
       fontSize: 17.54,
       fontFamily: "SourceHanSansCN-Normal",
@@ -15,6 +16,7 @@ export const axisConfig = {
     title: "",
     range: [0, 0.763],
     color: "rgba(254,244,235,0.6)",
+    labelOffset: 14,
     labelStyle: {
       fontSize: 17.54,
       fontFamily: "SourceHanSansCN-Normal",
