@@ -82,7 +82,12 @@ const TradeValue = ({ dataSource = data }) => {
           />
           <div className={styles.legend}>
             {amountOfIncrease.map((item, index) => (
-              <LegendItem value={item.count} name={item.term} index={index} />
+              <LegendItem
+                key={item.term}
+                value={item.count}
+                name={item.term}
+                index={index}
+              />
             ))}
           </div>
         </div>
