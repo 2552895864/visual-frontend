@@ -12,7 +12,7 @@ export const CBEC_PROVINCE_IMPORT = "import";
 export const CBEC_PROVINCE_EXPORT = "export";
 export const CBEC_PROVINCE_RANK_DEFAULT_WIDTH = 388;
 
-export const COLOR_LIST = [
+export const RATE_PIE_COLOR_LIST = [
   "#00C8FC",
   "#476DF4",
   "#F1CB34",
@@ -20,3 +20,5 @@ export const COLOR_LIST = [
   "#93ED67",
   "#EA64EC",
 ];
+
+export const TRADE_COLOR_LIST = ["#00B3F7", "#4979FF", "#F7C640"];

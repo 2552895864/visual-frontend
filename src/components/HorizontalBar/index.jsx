@@ -17,6 +17,10 @@ const initChart = (
     axisColor = "#20424C",
     barColors = ["#69E9FC", "#2555EB"],
     padding = [8, 128, 64, 96],
+    yAxisLabel = null,
+    xAxisLabel = null,
+    size = 16,
+    valueLabelStyle = null,
   },
   id
 ) => {
@@ -51,7 +55,7 @@ const initChart = (
         stroke: axisColor,
       },
     },
-    label: {
+    label: yAxisLabel || {
       offset: 20,
       style: {
         fontSize: 20,
@@ -77,7 +81,7 @@ const initChart = (
         stroke: axisColor,
       },
     },
-    label: {
+    label: xAxisLabel || {
       offset: 20,
       style: {
         fontSize: 20,
@@ -92,20 +96,23 @@ const initChart = (
   chart
     .interval()
     .position("date*value")
-    .size(24)
+    .size(size)
     .style({ radius: [20, 20, 0, 0] })
     .color("date", (date) =>
       moment(date).year() % 2 ? barColors[0] : barColors[1]
     )
-    .label("value", {
-      style: {
-        fontSize: 20,
-        fontFamily: "Microsoft YaHei",
-        fontWeight: "bold",
-        fill: "#FFFFFF",
-      },
-      offset: 18,
-    });
+    .label(
+      "value",
+      valueLabelStyle || {
+        style: {
+          fontSize: 20,
+          fontFamily: "Microsoft YaHei",
+          fontWeight: "bold",
+          fill: "#FFFFFF",
+        },
+        offset: 18,
+      }
+    );
   chart.interaction("element-active");
   chart.render();
 
@@ -118,6 +125,10 @@ const initChart = (
  * @param {Array} props.data 图表数据，Array Item 参考： { date: "2018-01-01", value: 34000 }
  * @param {String} props.axisColor 坐标轴颜色，默认值：'#20424C'
  * @param {Array} props.barColors 柱子颜色，分别为[奇数柱子颜色,偶数柱子颜色]，默认值：["#69E9FC", "#2555EB"]
+ * @param {Array} props.padding 容器padding，顺序为：上、右、下、左，默认值：[8, 8, 48, 64]
+ * @param {Object} props.yAxisLabel y轴Label配置项
+ * @param {Object} props.xAxisLabel x轴Label配置项
+ * @param {Number} props.size 柱子宽度
  */
 function HorizontalBar(props) {
   const containerClass = classnames({
