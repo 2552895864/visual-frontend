@@ -66,7 +66,7 @@ const TradeValue = ({ dataSource = data }) => {
     <ModuleContainer
       title="贸易货值详情"
       titleEn="Details of trade value"
-      placement="right"
+      // placement="right"
       className={styles.tradeValue}
     >
       <div className={styles.tradeValueLayout}>
