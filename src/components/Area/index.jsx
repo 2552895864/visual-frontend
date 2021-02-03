@@ -14,16 +14,53 @@ const defaultData = [
   { Date: "2021-06-06", value: 500 },
 ];
 
+const defaultAxisConfig = {
+  x: {
+    showTitle: false,
+    title: "",
+    range: [0, 0.99],
+    color: "#20424C",
+    titleStyle: {
+      fill: "#E0FCFF",
+      fontSize: 15,
+      fontFamily: "SourceHanSansCN-Normal",
+      fontWeight: "400",
+    },
+    labelOffset: 25,
+    labelStyle: {
+      fontSize: 20,
+      fontWeight: "bold",
+    },
+  },
+  y: {
+    showTitle: false,
+    title: "货值",
+    range: [0, 0.95],
+    color: "#20424C",
+    titleStyle: {
+      fill: "#E0FCFF",
+      fontSize: 15,
+      fontFamily: "SourceHanSansCN-Normal",
+      fontWeight: "400",
+    },
+    labelOffset: 18,
+    labelStyle: {
+      fontSize: 20,
+      fontWeight: "bold",
+      fontFamily: "Microsoft YaHei",
+    },
+  },
+};
+
 const initChart = (
   {
     data = defaultData,
-    key = "业务量",
-    axisColor = "#20424C",
-    lineColor = "#55FAFE",
+    multipleLines = [],
+    axis = defaultAxisConfig,
+    areaColor = { source: "#55FAFE", target: "#20424C" },
     padding = [8, 8, 48, 64],
-    shape = 'line',
-    yAxisLabel = null,
-    xAxisLabel = null,
+    shape = { line: "line", area: "area" },
+    extra = (charts) => charts,
   },
   id
 ) => {
@@ -34,91 +71,217 @@ const initChart = (
   });
 
   chart.scale("Date", {
-    range: [0, 0.99], // 右侧留白
+    range: axis.x.range, // 右侧留白
     type: "cat",
     formatter: (date) => moment(date).format("M月"),
+    alias: axis.x.title,
   });
 
-  chart.scale({
-    range: {
-      range: [0, 0.95],
-      min: 0,
-      nice: true,
-      sync: true,
-    },
-    value: {
-      range: [0, 0.95],
-      min: 0,
-      nice: true,
-      sync: true,
-      alias: key,
-    },
-  });
+  if (multipleLines.length > 0) {
+    multipleLines.forEach(({ key, alias }) => {
+      chart.scale({
+        [key]: {
+          range: axis.y.range,
+          min: 0,
+          nice: true,
+          sync: true,
+          alias,
+          formatter: (value) => Number(value).toLocaleString(),
+        },
+      });
+    });
+  } else {
+    chart.scale({
+      value: {
+        range: axis.y.range,
+        min: 0,
+        nice: true,
+        sync: true,
+        alias: axis.y.title,
+        formatter: (value) => Number(value).toLocaleString(),
+      },
+    });
+  }
 
   chart.tooltip({
     showCrosshairs: true,
     shared: true,
   });
 
-  // view1
-  const view1 = chart.createView({
-    padding,
-  });
-  view1.data(data);
-  view1.tooltip(false);
-  view1.axis(false);
-  view1
-    .area()
-    .position("Date*value")
-    .color(`l(90) 0:${lineColor} 1:${axisColor}`)
-    .style({
-      fillOpacity: 0.1,
-    })
-    .shape(shape);
+  if (multipleLines.length > 0) {
+    // 循环绘制折线图、面积图
+    multipleLines.forEach(
+      ({ data: lineData, areaColor: color, key }, index) => {
+        // view1 面积图 不带坐标轴
+        const view1 = chart.createView({
+          padding,
+        });
+        view1.data(lineData);
+        view1.tooltip(false);
+        view1.axis(false);
+        view1
+          .area()
+          .position(`Date*${key}`)
+          .color(`l(90) 0:${color.source} 1:${color.target}`)
+          .style({
+            fillOpacity: 0.1,
+          })
+          .shape(shape.area);
 
-  // view2
-  const view2 = chart.createView({
-    padding,
-  });
+        // view2 折线图 带坐标轴
+        const view2 = chart.createView({
+          padding,
+        });
 
-  view2.data(data);
-  view2.axis("value", {
-    tickLine: {
-      style: {
-        stroke: "transparent",
+        view2.data(lineData);
+        if (index === 0) {
+          view2.axis(key, {
+            title: axis.y.showTitle
+              ? {
+                  style: {
+                    ...axis.y.titleStyle,
+                  },
+                  autoRotate: false,
+                }
+              : null,
+            tickLine: {
+              style: {
+                stroke: "transparent",
+              },
+              alignTick: true,
+            },
+            line: {
+              style: { stroke: axis.y.color, lineWidth: 3 },
+            },
+            grid: null,
+            label: {
+              offset: axis.y.labelOffset,
+              style: {
+                ...axis.y.labelStyle,
+              },
+            },
+          });
+          view2.axis("Date", {
+            title: axis.x.showTitle
+              ? {
+                  style: {
+                    ...axis.x.titleStyle,
+                  },
+                }
+              : null,
+            line: {
+              style: { stroke: axis.x.color, lineWidth: 3 },
+            },
+            tickLine: null,
+            label: {
+              offset: axis.x.labelOffset,
+              style: {
+                ...axis.x.labelStyle,
+              },
+            },
+          });
+        } else {
+          view2.axis(false);
+        }
+        // 折线
+        view2
+          .line()
+          .color(color.source)
+          .position(`Date*${key}`)
+          .shape(shape.line);
+        // 点
+        view2
+          .point()
+          .position(`Date*${key}`)
+          .color(color.source)
+          .shape("circle");
+      }
+    );
+  } else {
+    // view1 面积图 不带坐标轴
+    const view1 = chart.createView({
+      padding,
+    });
+    view1.data(data);
+    view1.tooltip(false);
+    view1.axis(false);
+    view1
+      .area()
+      .position("Date*value")
+      .color(`l(90) 0:${areaColor.source} 1:${areaColor.target}`)
+      .style({
+        fillOpacity: 0.1,
+      })
+      .shape(shape.area);
+
+    // view2 折线图 带坐标轴
+    const view2 = chart.createView({
+      padding,
+    });
+
+    view2.data(data);
+    view2.axis("value", {
+      title: axis.y.showTitle
+        ? {
+            style: {
+              ...axis.y.titleStyle,
+            },
+            autoRotate: false,
+          }
+        : null,
+      tickLine: {
+        style: {
+          stroke: "transparent",
+        },
+        alignTick: true,
       },
-      alignTick: true,
-    },
-    line: {
-      style: { stroke: axisColor, lineWidth: 3 },
-    },
-    grid: null,
-    label: yAxisLabel || {
-      offset: 18,
-      style: {
-        fontSize: 20,
-        fontWeight: "bold",
-        fontFamily: "Microsoft YaHei",
+      line: {
+        style: { stroke: axis.y.color, lineWidth: 3 },
       },
-    },
-  });
-  view2.axis("Date", {
-    line: {
-      style: { stroke: axisColor, lineWidth: 3 },
-    },
-    tickLine: null,
-    label: xAxisLabel || {
-      offset: 25,
-      style: {
-        fontSize: 20,
-        fontWeight: "bold",
+      grid: null,
+      label: {
+        offset: axis.y.labelOffset,
+        style: {
+          ...axis.y.labelStyle,
+        },
       },
-    },
-  });
-  view2.line().color(lineColor).position("Date*value").shape(shape);
-  view2.point().position("Date*value").color(lineColor).shape("circle");
+    });
+    view2.axis("Date", {
+      title: axis.x.showTitle
+        ? {
+            style: {
+              ...axis.x.titleStyle,
+            },
+          }
+        : null,
+      line: {
+        style: { stroke: axis.x.color, lineWidth: 3 },
+      },
+      tickLine: null,
+      label: {
+        offset: axis.x.labelOffset,
+        style: {
+          ...axis.x.labelStyle,
+        },
+      },
+    });
+    // 折线
+    view2
+      .line()
+      .color(areaColor.source)
+      .position("Date*value")
+      .shape(shape.line);
+    // 点
+    view2
+      .point()
+      .position("Date*value")
+      .color(areaColor.source)
+      .shape("circle");
+  }
 
   chart.removeInteraction("legend-filter"); // 关闭图例过滤交互
+
+  extra(chart);
 
   chart.render();
   return chart;
@@ -128,13 +291,12 @@ const initChart = (
  *
  * @param {String} props.className 容器的 className ，默认 width: 1000px;height: 350px;
  * @param {Array} props.data 图表数据，Array Item 参考： { Date: "2021-01-01", value: 120 }
- * @param {String} props.key tooltip 显示的值的名称，默认值：'业务量'
- * @param {String} props.axisColor 坐标轴颜色，默认值：'#20424C'
- * @param {String} props.lineColor 折线颜色，默认值：'#55FAFE'
+ * @param {Array} props.multipleLines 多条线对应数据
+ * @param {Object} props.axis 坐标轴相关配置
+ * @param {Object} props.areaColor 渐变颜色，默认值：{ source: "#55FAFE", target: "#20424C" },
  * @param {Array} props.padding 容器padding，顺序为：上、右、下、左，默认值：[8, 8, 48, 64]
- * @param {Object} props.yAxisLabel y轴Label配置项
- * @param {Object} props.xAxisLabel x轴Label配置项
- * @param {String} props.shape 线图支持的图形：line,dot,smooth, 默认line
+ * @param {Object} props.shape 折线、面积图图形形状，默认值：{ line: "line", area: "area" }
+ * @param {Function} props.extra 增加额外图形，默认值：(charts)=>charts
  */
 
 function Area(props) {

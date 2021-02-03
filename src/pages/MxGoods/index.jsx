@@ -1,12 +1,25 @@
 import React from "react";
 // import intl from "react-intl-universal";
-import { PageContainer } from "@/components";
-// import styles from "./index.module.less";
+import { PageContainer, Area } from "@/components";
+import { buildMultipleLines } from "@/utils/utils";
+import { axisConfig, extra, multiAreaConfig } from "./options/area";
+import mockAreaData from "./mock/area";
+import styles from "./index.module.less";
 
 const MxGoods = () => {
   return (
     <PageContainer>
-      <div>{"MxGoods"}</div>
+      <div className={styles.map}></div>
+      <div className={styles.layout}>
+        <div className={styles.test}>
+          <Area
+            shape={{ line: "smooth", area: "smooth" }}
+            axis={axisConfig}
+            extra={extra}
+            multipleLines={buildMultipleLines(mockAreaData, multiAreaConfig)}
+          ></Area>
+        </div>
+      </div>
     </PageContainer>
   );
 };
