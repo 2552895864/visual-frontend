@@ -2,6 +2,7 @@ import React from "react";
 // import intl from "react-intl-universal";
 import { PageContainer, Area } from "@/components";
 import { buildMultipleLines } from "@/utils/utils";
+import { GoodsTable } from "./modules";
 import { axisConfig, extra, multiAreaConfig } from "./options/area";
 import mockAreaData from "./mock/area";
 import styles from "./index.module.less";
@@ -12,12 +13,13 @@ const MxGoods = () => {
       <div className={styles.map}></div>
       <div className={styles.layout}>
         <div className={styles.test}>
-          <Area
+          <GoodsTable></GoodsTable>
+          {/* <Area
             shape={{ line: "smooth", area: "smooth" }}
             axis={axisConfig}
             extra={extra}
             multipleLines={buildMultipleLines(mockAreaData, multiAreaConfig)}
-          ></Area>
+          ></Area> */}
         </div>
       </div>
     </PageContainer>
