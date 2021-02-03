@@ -63,7 +63,7 @@ const initChart = (
   const chart = new Chart({
     container: id,
     autoFit: true,
-    padding: 0,
+    padding,
   });
 
   chart.scale("Date", {
