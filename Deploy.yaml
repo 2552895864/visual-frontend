@@ -1,0 +1,72 @@
+# 创建命名空间
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: wisdom-port-visual-frontend  # 项目空间名称
+  labels:
+    name: wisdom-port-visual-frontend  # 标签
+---
+# 部署工作负载
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: deployment-visual-frontend # 负载名称
+  namespace: wisdom-port-visual-frontend  # 所在namespace
+spec: 
+  selector: 
+    matchLabels:
+      workloadselector: deployment-wisdom-port-visual-frontend  # 选择器 选择标签
+  replicas: 1  # pod 数量
+  template:
+    metadata:
+      labels:
+        workloadselector: deployment-wisdom-port-visual-frontend  # 标签
+    spec:
+      containers:
+      - name: visual-frontend  # 容器名称
+        image: harbor.dev.wh.digitalchina.com/wisdom-port/visual-frontend:build-$BUILD_NUMBER  # 镜像
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80  # 端口号
+          name: app  # 名称
+          protocol: TCP  # 协议
+      imagePullSecrets:
+        - name: harbor-penglha-yytvo
+      dnsPolicy: ClusterFirst  # dRancherNamespace规则
+---
+# 创建Service
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    cattle.io/creator: norman
+  name: service-visual-frontend  # service名称
+  namespace: wisdom-port-visual-frontend
+spec:
+  ports:
+  - port: 80         
+    protocol: TCP
+    targetPort: 80
+  selector:
+    workloadselector: deployment-wisdom-port-visual-frontend
+  type: ClusterIP
+---
+# 创建ingress
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-visual-frontend  # ingress名称
+  namespace: wisdom-port-visual-frontend  # 命名空间
+spec:
+  rules:
+  - host: wisdom-port-visual-frontend.dev.wh.digitalchina.com  #设置访问地址
+    http:
+      paths:
+      - backend:
+          serviceName: service-visual-frontend  # 服务名称
+          servicePort: 80  # 访问端口
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - wisdom-port-visual-frontend.dev.wh.digitalchina.com
+    secretName: whdc-cert
