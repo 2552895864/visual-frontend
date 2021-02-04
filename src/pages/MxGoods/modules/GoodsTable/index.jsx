@@ -86,13 +86,15 @@ function GoodsTable({ data = mockData, columns = mockColumns, className }) {
     <div className={containerClass}>
       <table className={styles.table}>
         <thead>
-          {columns.map(({ dataIndex, title, width }) => (
-            <th key={dataIndex} className={styles.th}>
-              <span className={styles.headerColumn}>
-                <div style={{ width }}>{title}</div>
-              </span>
-            </th>
-          ))}
+          <tr>
+            {columns.map(({ dataIndex, title, width }) => (
+              <th key={dataIndex} className={styles.th}>
+                <span className={styles.headerColumn}>
+                  <div style={{ width }}>{title}</div>
+                </span>
+              </th>
+            ))}
+          </tr>
         </thead>
         <tbody>
           {data.map((item) => (

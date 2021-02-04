@@ -1,0 +1,51 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  border: 1px dotted red;
+  height: 126px;
+  width: 531px;
+}
+
+.left,
+.right {
+  display: flex;
+  padding: 7px 0 14px 7px;
+}
+
+.qrCode {
+  width: 104px;
+  height: 104px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.left > .qrCode {
+  background-image: url("~@/assets/mxGoods/二维码.png");
+}
+.right > .qrCode {
+  background-image: url("~@/assets/mxGoods/二维码.png");
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 13px 0;
+}
+
+.title {
+  font-size: 20px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.location {
+  font-size: 14px;
+  font-family: Source Han Sans CN;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.link {
+  cursor: pointer;
+}
