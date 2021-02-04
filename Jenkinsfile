@@ -8,7 +8,8 @@ podTemplate(inheritFrom: 'pod1',
         containerTemplate(name:'jnlp',image:'harbor.dev.wh.digitalchina.com/devops/jenkins-slave-dev:latest')
         //添加需要的镜像容器
         //,containerTemplate(name:'maven',image:'harbor.dev.wh.digitalchina.com/library/maven:3-jdk-8',ttyEnabled:true,command:'cat')
-
+        //添加nodejs环境
+        containerTemplate(name:'node',image:'harbor.dev.wh.digitalchina.com/library/node:latest',ttyEnabled:true,command:'cat')
     ],
     volumes:[
         hostPathVolume(hostPath:'/var/run/docker.sock',mountPath:'/var/run/docker.sock')
@@ -16,12 +17,23 @@ podTemplate(inheritFrom: 'pod1',
 ){
     node(POD_LABEL){    
         properties([gitLabConnection('newgitlab.digitalchina.com')])
-        if(BRANCH_NAME == 'master'){            
+        if(BRANCH_NAME == 'test'){            
             gitlabBuilds(builds: ['Checkout','PushImage','Deploy']){
                 stage 'Checkout'
                 gitlabCommitStatus('Checkout'){
                     checkout scm
                 }
+
+                stage 'build'
+                gitlabCommitStatus('build'){
+                    container('node'){
+                        sh '''
+                            npm config set registry https://registry.npm.taobao.org
+                            npm install 
+                            npm run build
+                        '''
+                    }
+                }  
 
                 stage 'Push Image'
                 gitlabCommitStatus('PushImage'){
