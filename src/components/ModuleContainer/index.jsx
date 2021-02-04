@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import Border from "./Border";
 import styles from "./index.module.less";
 
 /**
@@ -39,5 +40,5 @@ const ModuleContainer = ({
     </div>
   );
 };
-
+ModuleContainer.BorderContainer = Border;
 export default ModuleContainer;
