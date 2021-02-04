@@ -5,7 +5,7 @@
 podTemplate(inheritFrom: 'pod1',
     containers:[
         //基础容器 不可删除
-        containerTemplate(name:'jnlp',image:'harbor.dev.wh.digitalchina.com/devops/jenkins-slave-dev:latest')
+        containerTemplate(name:'jnlp',image:'harbor.dev.wh.digitalchina.com/devops/jenkins-slave-dev:latest'),
         //添加需要的镜像容器
         //,containerTemplate(name:'maven',image:'harbor.dev.wh.digitalchina.com/library/maven:3-jdk-8',ttyEnabled:true,command:'cat')
         //添加nodejs环境
