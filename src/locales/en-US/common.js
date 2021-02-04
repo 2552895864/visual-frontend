@@ -1,5 +1,5 @@
 const common = {
-  title: "智慧口岸",
+  title: "Wisdom Port",
 };
 
 export default common;

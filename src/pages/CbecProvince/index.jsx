@@ -3,6 +3,8 @@ import React, { useState, Fragment } from "react";
 import { PageContainer } from "@/components";
 import Status from "./Status";
 import TrackInfo from "./TrackInfo";
+import Map from "./Map";
+import MapStreamer from "./MapStreamer";
 import Statistics from "./Statistics";
 import Rank from "./Rank";
 import styles from "./index.module.less";
@@ -29,6 +31,8 @@ const CbecProvince = () => {
           <Left />
         </div>
         <div className={styles.middle}>
+          <Map />
+          <MapStreamer />
           <Statistics />
         </div>
         <div className={styles.right}>
