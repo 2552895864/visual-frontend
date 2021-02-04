@@ -6,11 +6,11 @@ import { LangContext } from "@/context/locale";
 import {
   MENU_TRIGGER_NAME,
   MENU_TRIGGER_EN_NAME,
-  LANG_enUS,
-  LANG_zhCN,
   LANG_EN_US_VALUE,
   LANG_ZH_CN_VALUE,
 } from "@/constants";
+import zhIcon from "@/assets/pageContainer/langZh.svg";
+import enIcon from "@/assets/pageContainer/langEn.svg";
 import styles from "./Header.module.less";
 
 const DateTime = () => {
@@ -39,8 +39,8 @@ const DateTime = () => {
 
 const MenuTrigger = ({ onClick }) => {
   const { lang, setLang } = useContext(LangContext);
-  const handleSite = (event) => {
-    setLang(event.target.value);
+  const toggleLang = () => {
+    setLang(lang === LANG_EN_US_VALUE ? LANG_ZH_CN_VALUE : LANG_EN_US_VALUE);
   };
   return (
     <div className={styles.menuTrigger}>
@@ -49,10 +49,12 @@ const MenuTrigger = ({ onClick }) => {
         <div className={styles.triggerEnName}>{MENU_TRIGGER_EN_NAME}</div>
       </div>
       <div className={styles.triggerIcon} onClick={onClick}></div>
-      <select className="select" onChange={handleSite} value={lang}>
-        <option value={LANG_EN_US_VALUE}>{LANG_enUS}</option>
-        <option value={LANG_ZH_CN_VALUE}>{LANG_zhCN}</option>
-      </select>
+      <img
+        src={lang === LANG_EN_US_VALUE ? enIcon : zhIcon}
+        className={styles.langToggleIcon}
+        alt="lang"
+        onClick={toggleLang}
+      />
     </div>
   );
 };

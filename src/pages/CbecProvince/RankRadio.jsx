@@ -1,15 +1,15 @@
 import React, { useEffect, useReducer } from "react";
 import classnames from "classnames";
+import intl from "react-intl-universal";
 import { Interval } from "@/utils";
 import { CBEC_PROVINCE_EXPORT, CBEC_PROVINCE_IMPORT } from "@/constants";
 import styles from "./RankRadio.module.less";
 
-const STATUS = [
-  { label: "进口", flag: true },
-  { label: "出口", flag: false },
-];
-
 const RankRadio = ({ getType = () => {} }) => {
+  const STATUS = [
+    { label: intl.get("cbecProvince.import"), flag: true },
+    { label: intl.get("cbecProvince.export"), flag: false },
+  ];
   const [state, dispatch] = useReducer(
     (state, action) => {
       switch (action.type) {
@@ -42,7 +42,7 @@ const RankRadio = ({ getType = () => {} }) => {
     <div className={styles.rankRadio}>
       {STATUS.map((s) => (
         <div
-          key={s.label}
+          key={s.flag.toString()}
           className={classnames(styles.item, {
             [styles.selectedItem]: state.isImport === s.flag,
           })}
