@@ -1,0 +1,37 @@
+.plan {
+  width           : 678px;
+  height          : 100%;
+  background-image: url("~@/assets/intro/plan.png");
+
+  .planLayout {
+    padding: 30px 75px 0px 75px;
+    height : 100%;
+
+    .images {
+      width                : 100%;
+      display              : grid;
+      grid-template-columns: repeat(3, auto);
+      grid-template-rows   : 206px;
+      grid-column-gap      : 40px;
+
+      img {
+        width : 100%;
+        height: 100%;
+      }
+    }
+
+    .desc {
+      margin-top: 32px;
+
+      div {
+        line-height  : 16px;
+        font-size    : 16px;
+        font-family  : Source Han Sans CN;
+        font-weight  : 400;
+        color        : #83A6BA;
+        margin-bottom: 12px;
+        text-align   : center;
+      }
+    }
+  }
+}
