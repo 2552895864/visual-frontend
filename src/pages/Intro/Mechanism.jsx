@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 import { ModuleContainer } from "@/components";
 import styles from "./Mechanism.module.less";
 
@@ -19,7 +20,9 @@ const Mechanism = () => {
         <div className={styles.tree}></div>
         <div className={styles.desc}>
           {text.map((t) => (
-            <div className={styles.descItem}>{t}</div>
+            <div key={uuidv4()} className={styles.descItem}>
+              {t}
+            </div>
           ))}
         </div>
       </div>
