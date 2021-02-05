@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 import { ModuleContainer } from "@/components";
 import report1 from "@/assets/intro/report1.png";
 import report2 from "@/assets/intro/report2.png";
@@ -20,7 +21,7 @@ const WindowReport = () => {
       <div className={styles.windowReportLayout}>
         <div className={styles.images}>
           {img.map((m) => (
-            <img src={m} alt="pic" />
+            <img key={uuidv4()} src={m} alt="pic" />
           ))}
         </div>
         <div className={styles.desc}>{text}</div>

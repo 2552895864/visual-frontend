@@ -31,6 +31,7 @@ const defaultAxisConfig = {
       fontSize: 20,
       fontWeight: "bold",
     },
+    lineWidth: 3,
   },
   y: {
     showTitle: false,
@@ -49,6 +50,7 @@ const defaultAxisConfig = {
       fontWeight: "bold",
       fontFamily: "Microsoft YaHei",
     },
+    lineWidth: 3,
   },
 };
 
@@ -82,7 +84,6 @@ const initChart = (
       chart.scale({
         [key]: {
           range: axis.y.range,
-          min: 0,
           nice: true,
           sync: true,
           alias,
@@ -151,7 +152,7 @@ const initChart = (
               alignTick: true,
             },
             line: {
-              style: { stroke: axis.y.color, lineWidth: 3 },
+              style: { stroke: axis.y.color, lineWidth: axis.y.lineWidth },
             },
             grid: null,
             label: {
@@ -170,7 +171,7 @@ const initChart = (
                 }
               : null,
             line: {
-              style: { stroke: axis.x.color, lineWidth: 3 },
+              style: { stroke: axis.x.color, lineWidth: axis.x.lineWidth },
             },
             tickLine: null,
             label: {
@@ -236,7 +237,7 @@ const initChart = (
         alignTick: true,
       },
       line: {
-        style: { stroke: axis.y.color, lineWidth: 3 },
+        style: { stroke: axis.y.color, lineWidth: axis.y.lineWidth },
       },
       grid: null,
       label: {
@@ -255,7 +256,7 @@ const initChart = (
           }
         : null,
       line: {
-        style: { stroke: axis.x.color, lineWidth: 3 },
+        style: { stroke: axis.x.color, lineWidth: axis.x.lineWidth },
       },
       tickLine: null,
       label: {
