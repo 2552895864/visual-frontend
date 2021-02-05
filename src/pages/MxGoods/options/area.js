@@ -10,17 +10,19 @@ export const axisConfig = {
       fontSize: 17.54,
       fontFamily: "SourceHanSansCN-Normal",
     },
+    lineWidth: 1,
   },
   y: {
     showTitle: false,
     title: "",
-    range: [0, 0.763],
+    range: [0.1, 0.83],
     color: "rgba(254,244,235,0.6)",
     labelOffset: 14,
     labelStyle: {
       fontSize: 17.54,
       fontFamily: "SourceHanSansCN-Normal",
     },
+    lineWidth: 1,
   },
 };
 
@@ -30,7 +32,7 @@ export const extra = (charts) => {
     content: "货值",
     position: ["start", "end"],
     top: true,
-    offsetX: 16,
+    offsetX: -10,
     offsetY: 14,
     style: {
       fontSize: 15,

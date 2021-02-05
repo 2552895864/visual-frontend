@@ -17,6 +17,7 @@ function BreathingLights({ className }) {
         <div className={styles.label}>联网报检</div>
       </div>
       <div className={styles.service}>
+        <div className={styles.circle}></div>
         <div className={styles.inner}>
           <div className={styles.label}>企业服务</div>
         </div>
