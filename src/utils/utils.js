@@ -16,3 +16,15 @@ export const buildMultipleLines = (data, config) => {
     data: data.map((item) => ({ Date: item.Date, [key]: item[key] })),
   }));
 };
+
+// 判断点击事件是否在div元素的范围内
+export const isInDiv = (event, element) => {
+  const { clientX: x, clientY: y } = event;
+  const divx1 = element.offsetLeft;
+  const divy1 = element.offsetTop;
+  const divx2 = element.offsetLeft + element.offsetWidth;
+  const divy2 = element.offsetTop + element.offsetHeight;
+  return x >= divx1 && x <= divx2 && y >= divy1 && y <= divy2;
+};
+
+export const nextTick = (callback) => setTimeout(callback, 0);
