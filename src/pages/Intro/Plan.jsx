@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 import { ModuleContainer } from "@/components";
 import plan1 from "@/assets/intro/plan1.png";
 import plan2 from "@/assets/intro/plan2.png";
@@ -19,12 +20,12 @@ const Plan = () => {
       <div className={styles.planLayout}>
         <div className={styles.images}>
           {img.map((m) => (
-            <img src={m} alt="pic" />
+            <img key={uuidv4()} src={m} alt="pic" />
           ))}
         </div>
         <div className={styles.desc}>
           {text.map((t) => (
-            <div>{t}</div>
+            <div key={uuidv4()}>{t}</div>
           ))}
         </div>
       </div>
