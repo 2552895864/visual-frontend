@@ -1,0 +1,94 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.border {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background-image: url("~@/assets/mxGoods/popupBorder.png");
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  background-color: rgba(17, 33, 42, 0.77);
+}
+
+.content {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 58px);
+  z-index: 10000;
+  color: white;
+  padding: 35px 66px 58px 59px;
+  overflow-y: scroll;
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  height: 150px;
+}
+
+.option {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 24px;
+  font-family: PangMenZhengDao;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+.image {
+  width: 208px;
+  height: 109px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border: 1px solid white;
+  opacity: 0.6;
+  cursor: pointer;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.newPort {
+  background-image: url("~@/assets/mxGoods/newPort.jpg");
+}
+
+.huangshi {
+  background-image: url("~@/assets/mxGoods/huangshi.jpg");
+}
+.administration {
+  background-image: url("~@/assets/mxGoods/administration.jpg");
+}
+.railway {
+  background-image: url("~@/assets/mxGoods/railway.jpg");
+}
+.tianhe {
+  background-image: url("~@/assets/mxGoods/tianhe.jpg");
+}
+
+.table {
+  text-align: center;
+  margin-top: 29px;
+  & table,
+  & th,
+  & td {
+    border: 2px solid #82b2ce;
+  }
+  & > table {
+    width: 100%;
+  }
+}
