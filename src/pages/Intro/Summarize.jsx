@@ -1,10 +1,11 @@
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 import { ModuleContainer } from "@/components";
 import styles from "./Summarize.module.less";
 
 const { BorderContainer } = ModuleContainer;
 
-const Text = [
+const text = [
   {
     title: "愿景",
     content: "建设平安、效能、智慧、法治和绿色五型口岸",
@@ -23,8 +24,8 @@ const Summarize = () => {
   return (
     <BorderContainer className={styles.summarize}>
       <div className={styles.summarizeLayout}>
-        {Text.map((item) => (
-          <div className={styles.summarizeItem}>
+        {text.map((item) => (
+          <div key={uuidv4()} className={styles.summarizeItem}>
             <div className={styles.title}>{item.title}</div>
             <div className={styles.content}>{item.content}</div>
           </div>
