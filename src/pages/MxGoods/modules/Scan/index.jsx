@@ -2,13 +2,15 @@ import React from "react";
 import classnames from "classnames";
 import styles from "./index.module.less";
 
-function Scan({ className }) {
+function Scan({ className, onOpenPopup }) {
   const containerClass = classnames({
     [styles.container]: true,
     [className]: className,
   });
 
-  const handleOpenPopup = () => {};
+  const handleOpenPopup = () => {
+    onOpenPopup();
+  };
 
   return (
     <div className={containerClass}>
