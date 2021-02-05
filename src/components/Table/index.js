@@ -1,12 +1,29 @@
 import React, { useEffect, useRef } from "react";
 import { useInterval } from "@/hooks";
-import pfood from "@/assets/cebcPort/pfood.png";
-import luntai from "@/assets/cebcPort/luntai.png";
-import priyongpin from "@/assets/cebcPort/priyongpin.png";
-import shuma from "@/assets/cebcPort/shuma.png";
+import pfood from "@/assets/global/pfood.png";
+import food from "@/assets/global/food.png";
+import luntai from "@/assets/global/luntai.png";
+import priyongpin from "@/assets/global/priyongpin.png";
+import riyongpin from "@/assets/global/riyongpin.png";
+import shuma from "@/assets/global/shuma.png";
 import styles from "./index.module.less";
 
-function Table() {
+const iconMap = {
+  gold: {
+    pfood: pfood,
+    priyongpin: priyongpin,
+    shuma: shuma,
+    luntai: luntai,
+  },
+  blue: {
+    pfood: food,
+    priyongpin: riyongpin,
+    shuma: shuma,
+    luntai: luntai,
+  },
+};
+
+function Table({ theme = "gold" }) {
   const box1Ref = useRef();
   const box2Ref = useRef();
 
@@ -41,7 +58,7 @@ function Table() {
         <tbody>
           <tr style={{ marginLeft: -300 }}>
             <td>
-              <img src={shuma} alt="shuma" />
+              <img src={iconMap[theme].shuma} alt="shuma" />
             </td>
             <td>索尼A7R4 全画幅微单</td>
             <td>进口</td>
@@ -50,7 +67,7 @@ function Table() {
           </tr>
           <tr>
             <td>
-              <img src={priyongpin} alt="priyongpin" />
+              <img src={iconMap[theme].priyongpin} alt="priyongpin" />
             </td>
             <td>欧乐B电动牙刷</td>
             <td>进口</td>
@@ -59,7 +76,7 @@ function Table() {
           </tr>
           <tr>
             <td>
-              <img src={luntai} alt="luntai" />
+              <img src={iconMap[theme].luntai} alt="luntai" />
             </td>
             <td>福特Focus RS</td>
             <td>进口</td>
@@ -68,7 +85,7 @@ function Table() {
           </tr>
           <tr>
             <td>
-              <img src={pfood} alt="pfood" />
+              <img src={iconMap[theme].pfood} alt="pfood" />
             </td>
             <td>海底捞火锅</td>
             <td>出口</td>
@@ -81,7 +98,7 @@ function Table() {
         <tbody>
           <tr style={{ marginLeft: "-18.75rem" }}>
             <td>
-              <img src={shuma} alt="shuma" />
+              <img src={iconMap[theme].shuma} alt="shuma" />
             </td>
             <td>索尼A7R4 全画幅微单</td>
             <td>进口</td>
@@ -90,7 +107,7 @@ function Table() {
           </tr>
           <tr>
             <td>
-              <img src={priyongpin} alt="priyongpin" />
+              <img src={iconMap[theme].priyongpin} alt="priyongpin" />
             </td>
             <td>欧乐B电动牙刷</td>
             <td>进口</td>
@@ -99,7 +116,7 @@ function Table() {
           </tr>
           <tr>
             <td>
-              <img src={luntai} alt="luntai" />
+              <img src={iconMap[theme].luntai} alt="luntai" />
             </td>
             <td>福特Focus RS</td>
             <td>进口</td>
@@ -108,7 +125,7 @@ function Table() {
           </tr>
           <tr>
             <td>
-              <img src={pfood} alt="pfood" />
+              <img src={iconMap[theme].pfood} alt="pfood" />
             </td>
             <td>海底捞火锅</td>
             <td>出口</td>
