@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer, useEffect } from "react";
 // import intl from "react-intl-universal";
 import {
   PageContainer,
@@ -6,16 +6,40 @@ import {
   Table,
   ModuleContainer,
 } from "@/components";
+import { useInterval } from "@/hooks";
 import { CumulativeValue, ProgressBar, LineChart, EchartPie } from "./modules";
+import { SquareGridData } from "./mock";
 import styles from "./index.module.less";
 
 const CebcPort = () => {
+  const reducer = (state, { type, payload }) => {
+    switch (type) {
+      case "update":
+        return {
+          ...state,
+          SquareGridData: state.SquareGridData.map((item) => ({
+            ...item,
+            number: item.number * 1.01,
+          })),
+        };
+      default:
+        return state;
+    }
+  };
+  const [state, dispatch] = useReducer(reducer, { SquareGridData });
+  //CDM
+  useEffect(() => {
+    dispatch({ type: "update" });
+  }, []);
+  useInterval(() => {
+    dispatch({ type: "update" });
+  }, 6000);
   return (
     <PageContainer className={styles.container}>
       <div className={styles.layout}>
         <div className={styles.left}>
           <div className={styles.square}>
-            <SquareGrid></SquareGrid>
+            <SquareGrid data={state.SquareGridData}></SquareGrid>
           </div>
           <ModuleContainer
             key="今日进口货物类型TOP10"
