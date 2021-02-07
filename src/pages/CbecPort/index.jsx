@@ -14,6 +14,11 @@ import styles from "./index.module.less";
 const CebcPort = () => {
   const reducer = (state, { type, payload }) => {
     switch (type) {
+      case "init":
+        return {
+          ...state,
+          SquareGridData: SquareGridData,
+        };
       case "update":
         return {
           ...state,
@@ -26,10 +31,10 @@ const CebcPort = () => {
         return state;
     }
   };
-  const [state, dispatch] = useReducer(reducer, { SquareGridData });
+  const [state, dispatch] = useReducer(reducer, {});
   //CDM
   useEffect(() => {
-    dispatch({ type: "update" });
+    dispatch({ type: "init" });
   }, []);
   useInterval(() => {
     dispatch({ type: "update" });
