@@ -1,5 +1,6 @@
 import React from "react";
 import classnames from "classnames";
+import { NumberTransition } from "@/components";
 import styles from "./Statistic.module.less";
 
 function Statistic({
@@ -16,7 +17,9 @@ function Statistic({
     <div className={styles.container}>
       <div className={styles.label}>{label}</div>
       <div className={valueClass}>
-        <div className={styles.number}>{number.toLocaleString()}</div>
+        <div className={styles.number}>
+          <NumberTransition value={number} duration={5000}></NumberTransition>
+        </div>
         <div className={styles.suffix}>{suffix}</div>
       </div>
     </div>
