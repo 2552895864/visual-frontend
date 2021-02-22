@@ -28,6 +28,14 @@
   color: white;
   padding: 35px 66px 58px 59px;
   overflow-y: scroll;
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Hide scrollbar for IE, Edge and Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
 
 .options {
@@ -61,6 +69,10 @@
   &:hover {
     opacity: 1;
   }
+}
+
+.active {
+  opacity: 1;
 }
 
 .newPort {
