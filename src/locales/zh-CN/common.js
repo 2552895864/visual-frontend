@@ -1,5 +1,5 @@
 const common = {
-  title: "智慧口岸",
+  title: "湖北数字商务平台",
 };
 
 export default common;
