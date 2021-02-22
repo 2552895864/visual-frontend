@@ -1,5 +1,6 @@
 import React from "react";
 import classnames from "classnames";
+import intl from "react-intl-universal";
 import { Progress } from "antd";
 import styles from "./index.module.less";
 
@@ -12,7 +13,7 @@ function Popover({ quantity = 1111, percent = 50, positionClass }) {
     <div className={containerClass}>
       <div className={styles.quantity}>
         <div className={styles.value}>{quantity}</div>
-        <div className={styles.label}>此步骤单量</div>
+        <div className={styles.label}>{intl.get("cbecPort.stepValue")}</div>
       </div>
       <div className={styles.percentage}>
         <div className={styles.progress}>
@@ -25,7 +26,7 @@ function Popover({ quantity = 1111, percent = 50, positionClass }) {
             trailColor="rgba(43,168,235,0.3)"
           />
         </div>
-        <div className={styles.label}>占比</div>
+        <div className={styles.label}>{intl.get("cbecPort.percent")}</div>
       </div>
     </div>
   );
