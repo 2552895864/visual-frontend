@@ -7,3 +7,5 @@ export { default as RatePie } from "./RatePie";
 export { default as SquareGrid } from "./SquareGrid";
 export { default as Table } from "./Table";
 export { default as NumberTransition } from "./NumberTransition";
+export { default as Statistic } from "./Statistic";
+export { default as RingProcess } from "./RingProcess";

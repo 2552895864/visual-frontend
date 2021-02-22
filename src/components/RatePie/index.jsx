@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 // import { Interval } from "@/utils";
 import styles from "./index.module.less";
 
-const RatePie = ({ color = "#476df4", borderWidth = 5 }) => {
+const RatePie = ({ color = "#476df4", borderWidth = 5, value }) => {
   const containerId = uuidv4();
   useEffect(() => {
     // const interval = new Interval();
@@ -22,8 +22,8 @@ const RatePie = ({ color = "#476df4", borderWidth = 5 }) => {
             show: false,
           },
           data: [
-            { value: 52313322, name: "SONY" },
-            { value: 102389231, name: "HUAWEI" },
+            { value: 100 * value, name: "SONY" },
+            { value: 100 * (1 - value), name: "HUAWEI" },
           ],
         },
       ],

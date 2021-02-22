@@ -1,35 +1,33 @@
 import React from "react";
-import { ModuleContainer, RadialBar, HorizontalBar } from "@/components";
+import {
+  ModuleContainer,
+  RadialBar,
+  HorizontalBar,
+  Statistic,
+} from "@/components";
 import { TRADE_COLOR_LIST } from "@/constants";
 import styles from "./TradeValue.module.less";
 
 const data = {
   amountOfIncrease: [
-    { term: "2020", count: 82, max: 100 },
-    { term: "2019", count: 67, max: 100 },
-    { term: "2018", count: 57, max: 100 },
+    { term: "2020年贸易货值涨幅", count: 82, max: 100, showValue: "82%" },
+    { term: "2019年贸易货值涨幅", count: 67, max: 100, showValue: "67%" },
+    { term: "2018年贸易货值涨幅", count: 57, max: 100, showValue: "57%" },
   ],
 };
-
-const LegendItem = ({ value, name, index }) => {
+const Icon = ({ index }) => {
   const color = TRADE_COLOR_LIST[index];
   return (
-    <div className={styles.legendItem}>
+    <div
+      className={styles.icon}
+      style={{
+        border: `1px solid ${color}`,
+      }}
+    >
       <div
-        className={styles.icon}
-        style={{
-          border: `1px solid ${color}`,
-        }}
-      >
-        <div
-          className={styles.iconInner}
-          style={{ backgroundColor: color }}
-        ></div>
-      </div>
-      <div className={styles.info}>
-        <div className={styles.value}>{`${value}%`}</div>
-        <div className={styles.name}>{`${name}年贸易货值涨幅`}</div>
-      </div>
+        className={styles.iconInner}
+        style={{ backgroundColor: color }}
+      ></div>
     </div>
   );
 };
@@ -66,7 +64,6 @@ const TradeValue = ({ dataSource = data }) => {
     <ModuleContainer
       title="贸易货值详情"
       titleEn="Details of trade value"
-      // placement="right"
       className={styles.tradeValue}
     >
       <div className={styles.tradeValueLayout}>
@@ -82,11 +79,13 @@ const TradeValue = ({ dataSource = data }) => {
           />
           <div className={styles.legend}>
             {amountOfIncrease.map((item, index) => (
-              <LegendItem
+              <Statistic
                 key={item.term}
-                value={item.count}
-                name={item.term}
-                index={index}
+                icon={<Icon index={index} />}
+                title={item.term}
+                value={item.showValue}
+                infoGap={8}
+                reverse
               />
             ))}
           </div>
