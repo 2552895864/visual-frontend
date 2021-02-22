@@ -1,25 +1,37 @@
 import React from "react";
+import intl from "react-intl-universal";
 import Statistic from "./Statistic";
 import styles from "./index.module.less";
-
-const defaultData = [
-  { label: "今日进口总单量", number: 0, suffix: "票" },
-  { label: "今日进口总单量", number: 0, suffix: "票" },
-  { label: "今日进口总单量", number: 0, suffix: "万元" },
-  { label: "今日进口总单量", number: 0, suffix: "万元" },
-];
-
+const defaultData = {};
 function SquareGrid({ data = defaultData }) {
   return (
     <div className={styles.container}>
-      {data.map((item, index) => {
-        if (index === 1 || index === 2) {
-          return (
-            <Statistic {...item} key={index} valueClassName={styles.gold} />
-          );
-        }
-        return <Statistic {...item} key={index} />;
-      })}
+      {Object.keys(data).length > 0 ? (
+        <>
+          <Statistic
+            label={intl.get("cbecPort.totalImportOrders")}
+            number={data.totalImportOrders}
+            suffix={intl.get("cbecPort.votes")}
+          />
+          <Statistic
+            label={intl.get("cbecPort.totalExportOrders")}
+            number={data.totalExportOrders}
+            suffix={intl.get("cbecPort.votes")}
+            valueClassName={styles.gold}
+          />
+          <Statistic
+            label={intl.get("cbecPort.totalImportValue")}
+            number={data.totalImportValue}
+            suffix={intl.get("cbecPort.tenThousandYuan")}
+            valueClassName={styles.gold}
+          />
+          <Statistic
+            label={intl.get("cbecPort.totalExportValue")}
+            number={data.totalExportValue}
+            suffix={intl.get("cbecPort.tenThousandYuan")}
+          />
+        </>
+      ) : null}
     </div>
   );
 }
