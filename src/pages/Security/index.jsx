@@ -34,7 +34,7 @@ const Security = () => {
               <HorizontalBar
                 className={styles.bar}
                 data={pieData}
-                padding={[8, 0, 35, 60]}
+                padding={[0, 0, 35, 60]}
                 valueFormatter={(value) => value}
                 dateFormatter={(value) => value}
                 axisColor="rgba(254,244,235,0.6)"
@@ -43,6 +43,15 @@ const Security = () => {
                   "l(180) 0:#9BEBFF 1:#00B4F7",
                 ]}
               ></HorizontalBar>
+            </ModuleContainer>
+            <ModuleContainer
+              key="风险域名监测"
+              title="风险域名监测"
+              titleEn="Risk domain name monitoring"
+              placement="left"
+              className={styles.risk}
+            >
+              <OverView></OverView>
             </ModuleContainer>
           </div>
           <div className={styles.middle}></div>
