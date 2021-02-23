@@ -7,7 +7,7 @@ import Intro from "@/pages/Intro";
 
 const routes = [
   {
-    path: "/",   
+    path: "/",
     name: "整体对外贸易",
     component: ForeignTrade,
   },
@@ -17,7 +17,7 @@ const routes = [
     component: MxGoods,
   },
   {
-    path: "/cbec",   
+    path: "/cbec",
     name: "跨境电商",
     component: Cbec,
   },
@@ -27,7 +27,7 @@ const routes = [
     component: CbecProvince,
   },
   {
-    path: "/cbecPort",   
+    path: "/cbecPort",
     name: "跨境电商检测-口岸",
     component: CbecPort,
   },
