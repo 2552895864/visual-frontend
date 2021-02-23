@@ -1,11 +1,11 @@
 import React, { useReducer, useEffect } from "react";
-// import intl from "react-intl-universal";
 import {
   PageContainer,
   SquareGrid,
   Table,
   ModuleContainer,
 } from "@/components";
+import intl from "react-intl-universal";
 import { useInterval } from "@/hooks";
 import { CumulativeValue, ProgressBar, LineChart, EchartPie } from "./modules";
 import { SquareGridData } from "./mock";
@@ -22,10 +22,13 @@ const CebcPort = () => {
       case "update":
         return {
           ...state,
-          SquareGridData: state.SquareGridData.map((item) => ({
-            ...item,
-            number: item.number * 1.01,
-          })),
+          SquareGridData: Object.keys(state.SquareGridData).reduce(
+            (acc, key) => ({
+              ...acc,
+              [key]: state.SquareGridData[key] * 1.01,
+            }),
+            {}
+          ),
         };
       default:
         return state;
@@ -48,7 +51,7 @@ const CebcPort = () => {
           </div>
           <ModuleContainer
             key="今日进口货物类型TOP10"
-            title="今日进口货物类型TOP10"
+            title={intl.get("cbecPort.importTop10Title")}
             titleEn="The top 10 types of imports today"
             placement="left"
             className={styles.importTop10}
@@ -59,7 +62,7 @@ const CebcPort = () => {
           </ModuleContainer>
           <ModuleContainer
             key="今日出口货物类型TOP10"
-            title="今日出口货物类型TOP10"
+            title={intl.get("cbecPort.exportTop10Title")}
             titleEn="The top 10 types of exports today"
             placement="left"
             className={styles.exportTop10}
@@ -71,13 +74,17 @@ const CebcPort = () => {
         </div>
         <div className={styles.middle}>
           <div className={styles.title1}>
-            <div className={styles.label}>口岸累计单量</div>
+            <div className={styles.label}>
+              {intl.get("cbecPort.cumulativeQuantity")}
+            </div>
             <div className={styles.value}>
               {Number(29432932).toLocaleString()}
             </div>
           </div>
           <div className={styles.title2}>
-            <div className={styles.label}>口岸累计货值</div>
+            <div className={styles.label}>
+              {intl.get("cbecPort.cumulativePortValue")}
+            </div>
             <CumulativeValue></CumulativeValue>
           </div>
           <div className={styles.bottom}>
@@ -87,7 +94,7 @@ const CebcPort = () => {
         <div className={styles.right}>
           <ModuleContainer
             key="口岸货值分布"
-            title="口岸货值分布"
+            title={intl.get("cbecPort.portCargoValue")}
             titleEn="Distribution of value at the port"
             placement="left"
             className={styles.distribution}
@@ -96,7 +103,7 @@ const CebcPort = () => {
           </ModuleContainer>
           <ModuleContainer
             key="单量和货值变化趋势"
-            title="单量和货值变化趋势"
+            title={intl.get("cbecPort.changeTrend")}
             titleEn="Trends in volume and value"
             placement="left"
             className={styles.trends}

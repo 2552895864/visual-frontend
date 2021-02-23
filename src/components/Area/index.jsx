@@ -1,5 +1,5 @@
 import { Chart } from "@antv/g2";
-import { useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import classnames from "classnames";
 import moment from "moment";
 import { v4 as uuidv4 } from "uuid";
@@ -306,13 +306,16 @@ function Area(props) {
     [props.className]: props.className,
   });
   const containerId = uuidv4();
+  const chartRef = useRef();
   // CDM
   useEffect(() => {
     const chart = initChart(props, containerId);
+    chartRef.current = chart;
     return () => {
       chart.destroy();
     };
-  });
+  }, []);
+
   return <div id={containerId} className={containerClass}></div>;
 }
 
