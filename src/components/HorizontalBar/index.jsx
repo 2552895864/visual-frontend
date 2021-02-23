@@ -6,9 +6,9 @@ import { v4 as uuidv4 } from "uuid";
 import styles from "./index.module.less";
 
 const defaultData = [
-  { date: "2018-01-01", value: 34000 },
-  { date: "2019-01-01", value: 80005 },
-  { date: "2020-01-01", value: 100003 },
+  { index: 0, date: "2018-01-01", value: 34000 },
+  { index: 1, date: "2019-01-01", value: 80005 },
+  { index: 2, date: "2020-01-01", value: 100003 },
 ];
 
 const initChart = (
@@ -21,6 +21,9 @@ const initChart = (
     xAxisLabel = null,
     size = 16,
     valueLabelStyle = null,
+    valueFormatter = (value) =>
+      value.toString().replace(/(\d)(?=(?:\d{3})+$)/g, "$1,"),
+    dateFormatter = (date) => moment(date).format("YYYY"),
   },
   id
 ) => {
@@ -34,11 +37,10 @@ const initChart = (
     value: {
       range: [0, 0.95],
       nice: true,
-      formatter: (value) =>
-        value.toString().replace(/(\d)(?=(?:\d{3})+$)/g, "$1,"),
+      formatter: valueFormatter,
     },
     date: {
-      formatter: (date) => moment(date).format("YYYY"),
+      formatter: dateFormatter,
     },
   });
   chart.axis("date", {
@@ -98,9 +100,9 @@ const initChart = (
     .position("date*value")
     .size(size)
     .style({ radius: [20, 20, 0, 0] })
-    .color("date", (date) =>
-      moment(date).year() % 2 ? barColors[0] : barColors[1]
-    )
+    .color("index", (index) => {
+      return index % 2 ? barColors[0] : barColors[1];
+    })
     .label(
       "value",
       valueLabelStyle || {

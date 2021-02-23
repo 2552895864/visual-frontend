@@ -1,11 +1,12 @@
 import React, { useState, useRef } from "react";
-import { ModuleContainer, PageContainer } from "@/components";
+import { ModuleContainer, PageContainer, HorizontalBar } from "@/components";
 import { OverView } from "./modules";
+import pieData from "./mock/pie";
 // import intl from "react-intl-universal";
 import classnames from "classnames";
 import styles from "./index.module.less";
 
-const MxGoods = () => {
+const Security = () => {
   return (
     <>
       <div className={styles.track}>
@@ -23,6 +24,26 @@ const MxGoods = () => {
             >
               <OverView></OverView>
             </ModuleContainer>
+            <ModuleContainer
+              key="安全威胁来源"
+              title="安全威胁来源"
+              titleEn="Sources of security threats"
+              placement="left"
+              className={styles.sources}
+            >
+              <HorizontalBar
+                className={styles.bar}
+                data={pieData}
+                padding={[8, 0, 35, 60]}
+                valueFormatter={(value) => value}
+                dateFormatter={(value) => value}
+                axisColor="rgba(254,244,235,0.6)"
+                barColors={[
+                  "l(180) 0:#84AAFF 1:#4979FF",
+                  "l(180) 0:#9BEBFF 1:#00B4F7",
+                ]}
+              ></HorizontalBar>
+            </ModuleContainer>
           </div>
           <div className={styles.middle}></div>
           <div className={styles.right}></div>
@@ -32,4 +53,4 @@ const MxGoods = () => {
   );
 };
 
-export default MxGoods;
+export default Security;
