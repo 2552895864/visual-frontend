@@ -4,11 +4,10 @@ import Cbec from "@/pages/Cbec";
 import CbecProvince from "@/pages/CbecProvince";
 import CbecPort from "@/pages/CbecPort";
 import Intro from "@/pages/Intro";
-import Storybook from "@/pages/Storybook";
 
 const routes = [
   {
-    path: "/",   
+    path: "/",
     name: "整体对外贸易",
     component: ForeignTrade,
   },
@@ -18,7 +17,7 @@ const routes = [
     component: MxGoods,
   },
   {
-    path: "/cbec",   
+    path: "/cbec",
     name: "跨境电商",
     component: Cbec,
   },
@@ -28,7 +27,7 @@ const routes = [
     component: CbecProvince,
   },
   {
-    path: "/cbecPort",   
+    path: "/cbecPort",
     name: "跨境电商检测-口岸",
     component: CbecPort,
   },
@@ -36,10 +35,6 @@ const routes = [
     path: "/intro",
     name: "介绍",
     component: Intro,
-  },{
-    path: "/storybook",
-    name: "组件测试",
-    component: Storybook,
   },
 ];
 
