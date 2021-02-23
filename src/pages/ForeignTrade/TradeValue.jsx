@@ -2,8 +2,8 @@ import React from "react";
 import {
   ModuleContainer,
   RadialBar,
-  HorizontalBar,
   Statistic,
+  GroupedBar,
 } from "@/components";
 import { TRADE_COLOR_LIST } from "@/constants";
 import styles from "./TradeValue.module.less";
@@ -13,6 +13,14 @@ const data = {
     { term: "2020年贸易货值涨幅", count: 82, max: 100, showValue: "82%" },
     { term: "2019年贸易货值涨幅", count: 67, max: 100, showValue: "67%" },
     { term: "2018年贸易货值涨幅", count: 57, max: 100, showValue: "57%" },
+  ],
+  barData: [
+    { date: "2020", value: 34000, type: "series1" },
+    { date: "2019", value: 80005, type: "series1" },
+    { date: "2018", value: 100003, type: "series1" },
+    { date: "2020", value: 31000, type: "series2" },
+    { date: "2019", value: 42005, type: "series2" },
+    { date: "2018", value: 260003, type: "series2" },
   ],
 };
 const Icon = ({ index }) => {
@@ -33,7 +41,7 @@ const Icon = ({ index }) => {
 };
 
 const TradeValue = ({ dataSource = data }) => {
-  const { amountOfIncrease } = dataSource;
+  const { amountOfIncrease, barData } = dataSource;
   const getRadialBarColor = amountOfIncrease.reduce((prev, cur, index) => {
     const color = TRADE_COLOR_LIST[index];
     prev[cur.term] = {
@@ -52,14 +60,6 @@ const TradeValue = ({ dataSource = data }) => {
     },
   };
 
-  const barValueLabelStyle = {
-    style: {
-      fontSize: 16,
-      fontFamily: "Source Han Sans CN",
-      fontWeight: 400,
-      fill: "#FFFFFF",
-    },
-  };
   return (
     <ModuleContainer
       title="贸易货值详情"
@@ -91,14 +91,13 @@ const TradeValue = ({ dataSource = data }) => {
           </div>
         </div>
         <div className={styles.bottom}>
-          <HorizontalBar
-            className={styles.horizontalBar}
-            xAxisLabel={axisLabelStyle}
+          <GroupedBar
+            data={barData}
             yAxisLabel={axisLabelStyle}
+            xAxisLabel={axisLabelStyle}
             padding={[8, 8, 22, 45]}
-            shape="smooth"
-            lineColor="#00B4F7"
-            valueLabelStyle={barValueLabelStyle}
+            className={styles.groupedBar}
+            size={16}
           />
         </div>
       </div>
