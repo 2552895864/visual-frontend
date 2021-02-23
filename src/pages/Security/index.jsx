@@ -8,8 +8,10 @@ import styles from "./index.module.less";
 const MxGoods = () => {
   return (
     <>
-      <PageContainer className={classnames({})}>
-        <div className={styles.map}></div>
+      <div className={styles.track}>
+        <div className={styles.light}></div>
+      </div>
+      <PageContainer className={styles.container}>
         <div className={styles.layout}>
           <div className={styles.left}>
             <ModuleContainer
