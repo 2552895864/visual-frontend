@@ -4,6 +4,7 @@ import Cbec from "@/pages/Cbec";
 import CbecProvince from "@/pages/CbecProvince";
 import CbecPort from "@/pages/CbecPort";
 import Intro from "@/pages/Intro";
+import Security from "@/pages/Security";
 
 const routes = [
   {
@@ -35,6 +36,11 @@ const routes = [
     path: "/intro",
     name: "介绍",
     component: Intro,
+  },
+  {
+    path: "/security",
+    name: "安全防护",
+    component: Security,
   },
 ];
 

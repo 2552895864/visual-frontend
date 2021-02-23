@@ -1,0 +1,109 @@
+.container {
+  z-index: 100;
+  position: absolute;
+  width: 1920px;
+  height: 1080px;
+  background: none !important;
+}
+
+.track {
+  z-index: 1;
+  position: absolute;
+  width: 1920px;
+  height: 1080px;
+  background-image: url("~@/assets/security/bj.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  .light {
+    z-index: 100;
+    position: absolute;
+    -webkit-clip-path: polygon(
+      850.8px 763.2px,
+      377.5px 492.3px,
+      815.1px 248.1px,
+      388.3px 13.1px,
+      402.7px -13.1px,
+      876.9px 247.9px,
+      438.5px 492.7px,
+      851.2px 728.8px,
+      1786px 225.2px,
+      1927.2px 302.9px,
+      1912.8px 329.1px,
+      1785.8px 259.4px
+    );
+    -webkit-clip-path: polygon(
+      850.8px 763.2px,
+      377.5px 492.3px,
+      815.1px 248.1px,
+      388.3px 13.1px,
+      402.7px -13.1px,
+      876.9px 247.9px,
+      438.5px 492.7px,
+      851.2px 728.8px,
+      1786px 225.2px,
+      1927.2px 302.9px,
+      1912.8px 329.1px,
+      1785.8px 259.4px
+    );
+    width: 100%;
+    height: 100%;
+    background-image: url("~@/assets/security/light.png");
+    background-repeat: no-repeat;
+    background-position: 388px 13px;
+    transition: background-position 1s;
+  }
+  &::after {
+    z-index: 1;
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background: url("~@/assets/security/track.svg") no-repeat;
+    background-size: 100% 100%;
+  }
+}
+
+.layout {
+  padding: 32px 54px 0px 54px;
+  height: 100%;
+  display: flex;
+}
+
+.left {
+  width: 540px;
+  height: 100%;
+}
+
+.middle {
+  width: 760px;
+  height: 100%;
+  position: relative;
+}
+
+.right {
+  width: 512px;
+  height: 100%;
+}
+
+.overview {
+  width: 100%;
+  height: 220px;
+}
+
+.sources {
+  margin-top: 50px;
+  width: 100%;
+  height: 275px;
+}
+
+.risk{
+  margin-top: 45px;
+  width: 100%;
+  height: 360px;
+}
+
+.bar {
+  margin-top: 15px;
+  width: 100%;
+  height:100%
+}
