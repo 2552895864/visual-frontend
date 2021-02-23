@@ -1,4 +1,5 @@
 import React from "react";
+import { Statistic } from "@/components";
 import styles from "./StatisticsDetail.module.less";
 
 const data = [
@@ -12,12 +13,14 @@ const StatisticsDetail = () => {
   return (
     <div className={styles.statisticsDetail}>
       {data.map((item) => (
-        <div className={styles.statisticsDetailItem} key={item.name}>
-          <div className={styles.name}>{item.name}</div>
-          <div className={styles.value}>
-            {(+item.value.toFixed(2)).toLocaleString()}
-          </div>
-        </div>
+        <Statistic
+          key={item.name}
+          title={item.name}
+          titleClassName={styles.name}
+          value={(+item.value.toFixed(2)).toLocaleString()}
+          valueClassName={styles.value}
+          infoGap={26}
+        />
       ))}
     </div>
   );
