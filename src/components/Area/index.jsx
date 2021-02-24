@@ -87,7 +87,10 @@ const initChart = (
           nice: true,
           sync: true,
           alias,
-          formatter: (value) => Number(value).toLocaleString(),
+          formatter: (value) =>
+            axis.y.formatter
+              ? axis.y.formatter(value)
+              : Number(value).toLocaleString(),
         },
       });
     });
@@ -99,7 +102,10 @@ const initChart = (
         nice: true,
         sync: true,
         alias: axis.y.title,
-        formatter: (value) => Number(value).toLocaleString(),
+        formatter: (value) =>
+          axis.y.formatter
+            ? axis.y.formatter(value)
+            : Number(value).toLocaleString(),
       },
     });
   }
