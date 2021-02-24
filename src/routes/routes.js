@@ -4,7 +4,7 @@ import Cbec from "@/pages/Cbec";
 import CbecProvince from "@/pages/CbecProvince";
 import CbecPort from "@/pages/CbecPort";
 import Intro from "@/pages/Intro";
-
+import Railway from "@/pages/Railway";
 const routes = [
   {
     path: "/",
@@ -35,6 +35,11 @@ const routes = [
     path: "/intro",
     name: "介绍",
     component: Intro,
+  },
+  {
+    path: "/railway",
+    name: "铁路运输",
+    component: Railway,
   },
 ];
 

@@ -1,0 +1,50 @@
+.table {
+  color          : white;
+  width          : 100%;
+  border-collapse: collapse;
+
+  th {
+    padding: 0 20px;
+  }
+
+  .tableHead {
+    height     : 50px;
+    line-height: 50px;
+    font-size  : 16px;
+    font-family: Source Han Sans CN;
+    font-weight: bold;
+    color      : #ffffff;
+  }
+
+  .tableHeadHidden {
+    display: none;
+  }
+
+  .tableBody {
+    .tableRow {
+      height     : 50px;
+      line-height: 50px;
+      font-size  : 16px;
+      font-family: Source Han Sans CN;
+      font-weight: 400;
+      color      : #ffffff;
+
+      td {
+        position     : relative;
+        overflow-wrap: break-word;
+        padding      : 0 20px;
+      }
+
+      .tdBorderBottom {
+        border-bottom: 1px solid #ffffff33;
+      }
+    }
+  }
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  overflow     : hidden;
+  white-space  : nowrap;
+  width        : 100%;
+}

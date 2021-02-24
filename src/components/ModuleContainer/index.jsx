@@ -8,6 +8,7 @@ import styles from "./index.module.less";
  * @param {string} title 标题
  * @param {string} titleEn 英文标题
  * @param {left | right} placement 标题位置
+ * @param {number | number[]} contentPadding 内容的Padding
  * @param {string} className 容器类名
  * @param {ReactNode} extra 右/左上角的操作区域
  */
@@ -18,6 +19,7 @@ const ModuleContainer = ({
   className = "",
   children,
   extra,
+  contentPadding,
 }) => {
   const containerClass = classNames(styles.moduleContainer, className);
   const headerClass = classNames(styles.moduleContainerHeader, {
@@ -29,6 +31,18 @@ const ModuleContainer = ({
     [styles.moduleContainerHeaderExtraRight]: placement === "left",
     [styles.moduleContainerHeaderExtraHidden]: !extra,
   });
+  const getPadding = () => {
+    let padding = "";
+    if (contentPadding) {
+      if (Array.isArray(contentPadding)) {
+        padding = contentPadding.map((i) => `${i}px`).join(" ");
+      }
+      if (typeof contentPadding === "number") {
+        padding = `${contentPadding}px`;
+      }
+    }
+    return padding;
+  };
   return (
     <div className={containerClass}>
       <div className={headerClass}>
@@ -36,7 +50,12 @@ const ModuleContainer = ({
         <div className={styles.moduleContainerTitleEn}>{titleEn}</div>
         <div className={extraClass}>{extra}</div>
       </div>
-      <div className={styles.moduleContainerContent}>{children}</div>
+      <div
+        className={styles.moduleContainerContent}
+        style={{ padding: getPadding() }}
+      >
+        {children}
+      </div>
     </div>
   );
 };
