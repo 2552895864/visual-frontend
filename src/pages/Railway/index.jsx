@@ -10,7 +10,7 @@ import styles from "./index.module.less";
 const { VerticalLayout, HorizontalLayout } = Layout;
 const Railway = () => {
   return (
-    <PageContainer className={styles.railwayCover}>
+    <PageContainer className={styles.railwayCover} title="铁路运输智能监测">
       <HorizontalLayout
         options={["70.5%", "25.5%"]}
         gap="4%"

@@ -5,6 +5,7 @@ import styles from "./Business.module.less";
 const data = [];
 for (let i = 0; i < 4; i++) {
   data.push({
+    id: i,
     date: "2021-10-07",
     number: "3049230059284234",
     node: "满洲里",
@@ -51,6 +52,7 @@ const Business = ({ dataSource = data }) => {
         columns={columns}
         dataSource={dataSource}
         headerClassName={styles.tableHeader}
+        rowKey="id"
       />
     </ModuleContainer>
   );
