@@ -61,13 +61,13 @@ const option = {
             // var colorList = ['#2ba8eb','#f1cb34'];
             if (params.dataIndex % 2 === 0) {
               return new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                { offset: 0, color: "rgba(15, 88, 253, 1)" },
-                { offset: 1, color: "rgba(15, 88, 253, 0)" },
+                { offset: 0, color: "rgba(155, 235, 255, 1)" },
+                { offset: 1, color: "rgba(0, 180, 247, 1)" },
               ]);
             } else {
               return new echarts.graphic.LinearGradient(0, 0, 0, 1, [
-                { offset: 0, color: "rgba(255, 212, 123, 1)" },
-                { offset: 1, color: "rgba(255, 212, 123, 0)" },
+                { offset: 0, color: "rgba(132, 170, 255, 1)" },
+                { offset: 1, color: "rgba(73, 121, 255, 1)" },
               ]);
             }
           },

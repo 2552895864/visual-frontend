@@ -5,10 +5,10 @@ import { v4 as uuidv4 } from "uuid";
 import { ModuleContainer } from "@/components";
 import styles from "./GoodsType.module.less";
 const data = [
-  { question: "问题 2", percent: 0.5, flag: 1 },
-  { question: "问题 6", percent: 0.62, flag: 0 },
-  { question: "问题 7", percent: 0.72, flag: 1 },
-  { question: "问题 8", percent: 0.78, flag: 0 },
+  { question: "食品", percent: 0.5, flag: 1 },
+  { question: "服装", percent: 0.62, flag: 0 },
+  { question: "电器", percent: 0.72, flag: 1 },
+  { question: "日用品", percent: 0.78, flag: 0 },
 ];
 
 const renderRadialBar = (id) => {
@@ -51,7 +51,7 @@ const renderRadialBar = (id) => {
   chart
     .interval()
     .position("question*percent")
-    .color("flag", (val) => (val ? "#1EC2FF" : "#FFC47F"))
+    .color("flag", (val) => (val ? "#1EC2FF" : "#4A7AFF"))
     .style({
       lineCap: "round",
     })

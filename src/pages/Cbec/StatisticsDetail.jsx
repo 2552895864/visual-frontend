@@ -1,5 +1,5 @@
 import React from "react";
-import { Statistic } from "@/components";
+import { Statistic, Layout } from "@/components";
 import styles from "./StatisticsDetail.module.less";
 
 const data = [
@@ -11,7 +11,12 @@ const data = [
 
 const StatisticsDetail = () => {
   return (
-    <div className={styles.statisticsDetail}>
+    <Layout.NormalLayout
+      columnsOptions={{ repeat: { count: 2, value: "auto" } }}
+      rowsOptions={{ repeat: { count: 2, value: "auto" } }}
+      rowsGap="27px"
+      className={styles.statisticsDetail}
+    >
       {data.map((item) => (
         <Statistic
           key={item.name}
@@ -22,7 +27,7 @@ const StatisticsDetail = () => {
           infoGap={26}
         />
       ))}
-    </div>
+    </Layout.NormalLayout>
   );
 };
 
