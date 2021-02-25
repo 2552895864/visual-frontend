@@ -1,5 +1,5 @@
 import React from "react";
-import { Statistic } from "@/components";
+import { Statistic, Layout } from "@/components";
 import styles from "./DetailStatistics.module.less";
 
 import car from "@/assets/foreignTrade/car.png";
@@ -23,8 +23,8 @@ const icon = {
 
 const DetailStatistics = ({ dataSource = data }) => {
   return (
-    <div className={styles.detailStatistics}>
-      {dataSource.map((item, index) => (
+    <Layout.HorizontalLayout options={{ repeat: { count: 4, value: "25%" } }}>
+      {dataSource.map((item) => (
         <Statistic
           icon={
             <img
@@ -41,9 +41,10 @@ const DetailStatistics = ({ dataSource = data }) => {
           reverse
           infoGap={5}
           key={item.name}
+          className={styles.item}
         />
       ))}
-    </div>
+    </Layout.HorizontalLayout>
   );
 };
 

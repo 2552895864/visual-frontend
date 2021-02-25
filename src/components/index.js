@@ -12,3 +12,5 @@ export { default as RingProcess } from "./RingProcess";
 export { default as GroupedBar } from "./GroupedBar";
 export { default as Layout } from "./GridLayout";
 export { default as BaseTable } from "./BaseTable";
+export { default as Legend } from "./Legend";
+export { default as Radio } from "./Radio";

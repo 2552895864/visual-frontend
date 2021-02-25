@@ -4,7 +4,7 @@ import styles from "./Business.module.less";
 
 const Business = () => {
   const axisLabelStyle = {
-    style: {
+    labelStyle: {
       fontSize: 14,
       fontWeight: 400,
       color: "#E0FCFF80",
@@ -13,19 +13,17 @@ const Business = () => {
   };
   return (
     <ModuleContainer
-      title="累积业务量"
-      titleEn="Cumulative business volume"
+      title="月度贸易货值变化"
+      titleEn="Monthly change in trade value"
       className={styles.business}
     >
-      <div className={styles.areaLayout}>
-        <Area
-          className={styles.area}
-          axis={{ x: axisLabelStyle, y: axisLabelStyle }}
-          padding={[8, 8, 18, 25]}
-          shape={{ line: "smooth", area: "smooth" }}
-          areaColor={{ source: "#00B4F7", target: "#00B4F700" }}
-        />
-      </div>
+      <Area
+        className={styles.area}
+        axis={{ x: axisLabelStyle, y: axisLabelStyle }}
+        padding={[10, 6, 10, 25]}
+        shape={{ line: "smooth", area: "smooth" }}
+        areaColor={{ source: "#00B4F7", target: "#00B4F700" }}
+      />
     </ModuleContainer>
   );
 };

@@ -1,6 +1,5 @@
 import React from "react";
-// import intl from "react-intl-universal";
-import { PageContainer } from "@/components";
+import { PageContainer, Layout } from "@/components";
 import Business from "./Business";
 import Category from "./Category";
 import CbecData from "./CbecData";
@@ -11,25 +10,30 @@ import DetailStatistics from "./DetailStatistics";
 import Earth from "./Earth";
 import styles from "./index.module.less";
 
+const { HorizontalLayout, VerticalLayout } = Layout;
 const ForeignTrade = () => {
   return (
-    <PageContainer>
-      <div className={styles.foreignTrade}>
-        <div className={styles.left}>
+    <PageContainer className={styles.cover}>
+      <HorizontalLayout
+        options={["28.5%", "39%", "28.5%"]}
+        gap="2%"
+        className={styles.foreignTrade}
+      >
+        <VerticalLayout options={["28.5%", "32%", "29.5%"]} gap="5%">
           <CbecData />
           <Country />
           <Business />
-        </div>
-        <div className={styles.middle}>
-          <MainStatistics />
+        </VerticalLayout>
+        <VerticalLayout options={["71.5%", "11.5%", "15.5%"]}>
           <Earth />
+          <MainStatistics />
           <DetailStatistics />
-        </div>
-        <div className={styles.right}>
+        </VerticalLayout>
+        <VerticalLayout options={["66%", "28%"]} gap="6%">
           <TradeValue />
           <Category />
-        </div>
-      </div>
+        </VerticalLayout>
+      </HorizontalLayout>
     </PageContainer>
   );
 };

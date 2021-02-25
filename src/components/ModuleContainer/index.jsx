@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import getPadding from '../utils/getPadding'
 import Border from "./Border";
 import styles from "./index.module.less";
 
@@ -31,18 +32,6 @@ const ModuleContainer = ({
     [styles.moduleContainerHeaderExtraRight]: placement === "left",
     [styles.moduleContainerHeaderExtraHidden]: !extra,
   });
-  const getPadding = () => {
-    let padding = "";
-    if (contentPadding) {
-      if (Array.isArray(contentPadding)) {
-        padding = contentPadding.map((i) => `${i}px`).join(" ");
-      }
-      if (typeof contentPadding === "number") {
-        padding = `${contentPadding}px`;
-      }
-    }
-    return padding;
-  };
   return (
     <div className={containerClass}>
       <div className={headerClass}>
@@ -52,7 +41,7 @@ const ModuleContainer = ({
       </div>
       <div
         className={styles.moduleContainerContent}
-        style={{ padding: getPadding() }}
+        style={{ padding: getPadding(contentPadding) }}
       >
         {children}
       </div>
