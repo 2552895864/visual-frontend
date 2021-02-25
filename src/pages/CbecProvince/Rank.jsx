@@ -104,7 +104,6 @@ const Rank = () => {
           key={item.title}
           title={item.title}
           titleEn={item.titleEn}
-          placement="right"
           className={item.className}
           extra={<RankRadio getType={item.getType} />}
         >

@@ -30,20 +30,29 @@
   }
 
   .value {
-    position: absolute;
-    top     : 0px;
-    left    : 46px;
+    position : absolute;
+    top      : -50%;
+    left     : 46px;
+    transform: translateY(27%);
 
     .count {
-      min-width       : 70px;
-      background-color: rgb(14, 19, 31);
+      width           : max-content;
+      list-style-type : disc;
+      padding         : 10px 10px 10px 24px;
+      background-color: #15192187;
       border          : 0.1875rem solid #505c61;
-      height          : 35px;
-      border-radius   : 20px;
-      color           : rgb(238, 143, 45);
-      display         : flex;
-      justify-content : center;
-      align-items     : center;
+      border-radius   : 6px;
+      color           : rgba(255, 255, 255, 0.8);
+      font-size       : 18px;
+    }
+
+    .noneCount {
+      width           : max-content;
+      padding         : 10px;
+      background-color: #15192187;
+      border          : 0.1875rem solid #505c61;
+      border-radius   : 6px;
+      color           : rgba(255, 255, 255, 0.8);
       font-size       : 18px;
     }
 

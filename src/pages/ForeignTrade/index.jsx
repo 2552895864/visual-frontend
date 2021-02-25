@@ -13,7 +13,7 @@ import styles from "./index.module.less";
 const { HorizontalLayout, VerticalLayout } = Layout;
 const ForeignTrade = () => {
   return (
-    <PageContainer className={styles.cover}>
+    <PageContainer className={styles.cover} title="湖北外资外贸全景">
       <HorizontalLayout
         options={["28.5%", "39%", "28.5%"]}
         gap="2%"

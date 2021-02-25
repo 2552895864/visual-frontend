@@ -64,7 +64,7 @@ const Header = ({ title, onClickMenuTrigger }) => {
     <header className={styles.header}>
       <DateTime />
       <div className={styles.title}>
-        <span>{intl.get("common.title")}</span>
+        <span>{title || intl.get("common.title")}</span>
       </div>
       <MenuTrigger onClick={onClickMenuTrigger} />
     </header>

@@ -142,7 +142,8 @@ const TradeValue = ({ dataSource = data }) => {
             xAxisLabel={axisLabelStyle}
             padding={[8, 8, 22, 45]}
             className={styles.groupedBar}
-            size={16}
+            marginRatio={0.3}
+            size={12}
           />
         </div>
       </VerticalLayout>

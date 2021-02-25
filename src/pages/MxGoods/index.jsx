@@ -40,6 +40,7 @@ const MxGoods = () => {
           [styles.container]: true,
           [styles.blur]: popupVisibility,
         })}
+        title="进出口大数据监测"
       >
         <div className={styles.layout}>
           <div className={styles.left}>
