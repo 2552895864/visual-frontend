@@ -12,7 +12,10 @@ import styles from "./index.module.less";
 const { VerticalLayout, HorizontalLayout } = Layout;
 const Cbec = () => {
   return (
-    <PageContainer className={styles.coverPageContainer}>
+    <PageContainer
+      className={styles.coverPageContainer}
+      title="跨境电商数据大盘"
+    >
       <HorizontalLayout
         options={["46.5%", "50%"]}
         className={styles.cbecLayout}

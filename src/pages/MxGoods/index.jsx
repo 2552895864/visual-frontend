@@ -36,6 +36,7 @@ const MxGoods = () => {
         className={classnames({
           [styles.blur]: popupVisibility,
         })}
+        title="进出口大数据监测"
       >
         <div className={styles.map}></div>
         <div className={styles.layout}>

@@ -11,7 +11,7 @@ import styles from "./index.module.less";
 
 const Intro = () => {
   return (
-    <PageContainer>
+    <PageContainer title="湖北单一窗口">
       <div className={styles.intro}>
         <div className={styles.left}>
           <Summarize />
