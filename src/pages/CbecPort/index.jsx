@@ -26,7 +26,7 @@ const CebcPort = () => {
           SquareGridData: Object.keys(state.SquareGridData).reduce(
             (acc, key) => ({
               ...acc,
-              [key]: state.SquareGridData[key] * 1.01,
+              [key]: state.SquareGridData[key] * 1.0001,
             }),
             {}
           ),
@@ -58,7 +58,7 @@ const CebcPort = () => {
             className={styles.importTop10}
           >
             <div className={styles.list}>
-              <Table></Table>
+              <Table duration={10000} delay={3000}></Table>
             </div>
           </ModuleContainer>
           <ModuleContainer
@@ -69,7 +69,7 @@ const CebcPort = () => {
             className={styles.exportTop10}
           >
             <div className={styles.list}>
-              <Table></Table>
+              <Table theme="blue" duration={10000} delay={5500}></Table>
             </div>
           </ModuleContainer>
         </div>
