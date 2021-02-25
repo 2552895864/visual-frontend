@@ -17,13 +17,11 @@ function SquareGrid({ data = defaultData }) {
             label={intl.get("cbecPort.totalExportOrders")}
             number={data.totalExportOrders}
             suffix={intl.get("cbecPort.votes")}
-            valueClassName={styles.gold}
           />
           <Statistic
             label={intl.get("cbecPort.totalImportValue")}
             number={data.totalImportValue}
             suffix={intl.get("cbecPort.tenThousandYuan")}
-            valueClassName={styles.gold}
           />
           <Statistic
             label={intl.get("cbecPort.totalExportValue")}
