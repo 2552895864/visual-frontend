@@ -5,3 +5,4 @@ export { default as BreathingLights } from "./BreathingLights";
 export { default as Statistic } from "./Statistic";
 export { default as Popup } from "./Popup";
 export { default as AnnouncementTable } from "./AnnouncementTable";
+export { default as FlashingPoint } from "./FlashingPoint";
