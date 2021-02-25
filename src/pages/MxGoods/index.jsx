@@ -112,7 +112,7 @@ const MxGoods = () => {
               className={styles.rankingImport}
             >
               <div className={styles.table}>
-                <Table theme="blue"></Table>
+                <Table theme="blue" duration={10000} delay={3000}></Table>
               </div>
             </ModuleContainer>
             <ModuleContainer
@@ -123,7 +123,7 @@ const MxGoods = () => {
               className={styles.rankingExport}
             >
               <div className={styles.table}>
-                <Table theme="blue"></Table>
+                <Table theme="blue" duration={10000} delay={5500}></Table>
               </div>
               <div className={styles.breathingLights}>
                 <BreathingLights></BreathingLights>

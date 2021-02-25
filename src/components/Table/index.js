@@ -23,7 +23,7 @@ const iconMap = {
   },
 };
 
-function Table({ theme = "gold" }) {
+function Table({ theme = "gold", duration = 5000, delay = 0 }) {
   const box1Ref = useRef();
   const box2Ref = useRef();
 
@@ -46,9 +46,20 @@ function Table({ theme = "gold" }) {
       }, 1500);
     }, 1000);
   }
-  useInterval(() => {
-    switchData(box1Ref, box2Ref);
-  }, 5000);
+  useEffect(() => {
+    let id = "";
+    setTimeout(() => {
+      switchData(box1Ref, box2Ref);
+      id = setInterval(() => {
+        switchData(box1Ref, box2Ref);
+      }, duration);
+    }, delay);
+    return () => clearInterval(id);
+  }, []);
+  // useInterval(() => {
+  //   switchData(box1Ref, box2Ref);
+  // }, 5000);
+
   useEffect(() => {
     box1Ref.current.style.left = 0;
   });
