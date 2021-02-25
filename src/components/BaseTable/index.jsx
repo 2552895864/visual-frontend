@@ -1,5 +1,6 @@
 import React from "react";
 import classNames from "classnames";
+import getPadding from "../utils/getPadding";
 import styles from "./index.module.less";
 
 //FIXME:单元格省略
@@ -14,6 +15,7 @@ import styles from "./index.module.less";
  * @param {Function} rowClassName 表格行的类名 function(record, index): string
  * @param {string} rowKey 表格行 key 的取值
  * @param {number} rowHeight 行高
+ * @param {number} rowPadding 单元格padding
  * @param {string} className 表格类名
  * @param {CSSProperties} style 表格样式
  * @param {boolean} bordered 是否显示表格行边框
@@ -26,6 +28,7 @@ const Table = ({
   rowClassName = () => {},
   rowKey,
   rowHeight,
+  tdPadding,
   className,
   style,
   bordered = true,
@@ -67,6 +70,7 @@ const Table = ({
                 style={{
                   textAlign: c.textAlign || defaultTextAlign,
                   width: c.width,
+                  padding: getPadding(tdPadding),
                 }}
                 className={classNames({
                   [styles.ellipsis]: c.ellipsis,

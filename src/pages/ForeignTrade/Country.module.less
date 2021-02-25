@@ -1,46 +1,25 @@
 .country {
-  height    : 298px;
-  width     : 100%;
-  margin-top: 50px;
+  height       : 100%;
+  width        : 100%;
+}
 
-  .countryLayout {
-    margin-top           : 19px;
-    display              : grid;
-    grid-template-columns: repeat(1, auto);
-    grid-template-rows   : repeat(5, auto);
-    grid-row-gap         : 20px;
-  }
+.countryName {
+  font-size  : 20px;
+  font-family: Source Han Sans CN;
+  font-weight: bold;
+  color      : #FFFFFF;
+  opacity    : 0.8;
+}
 
-  .countryItem {
-    display    : flex;
-    align-items: center;
-    position   : relative;
+.value {
+  font-size  : 20px;
+  font-family: PangMenZhengDao-3;
+  font-weight: 400;
+  color      : #FFFFFF;
+  opacity    : 0.8;
+}
 
-    .countryIcon {
-      margin-right: 30px;
-
-      .countryIconContent {
-        border       : 3px solid white;
-        border-radius: 16px;
-      }
-    }
-
-    .countryName {
-      font-size  : 20px;
-      font-family: Source Han Sans CN;
-      font-weight: bold;
-      color      : #FFFFFF;
-      opacity    : 0.8;
-    }
-
-    .value {
-      position   : absolute;
-      right      : 0px;
-      font-size  : 20px;
-      font-family: PangMenZhengDao-3;
-      font-weight: 400;
-      color      : #FFFFFF;
-      opacity    : 0.8;
-    }
-  }
+.countryIconContent {
+  border       : 3px solid white;
+  border-radius: 16px;
 }

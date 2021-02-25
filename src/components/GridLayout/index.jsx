@@ -18,7 +18,7 @@ const getRepeatConfig = (options) => {
   } else {
     if (Array.isArray(options) && options.length) {
       config[0] = options.join(" ");
-      config[1] = options.join(" ").length;
+      config[1] = options.length;
     }
   }
   return config;

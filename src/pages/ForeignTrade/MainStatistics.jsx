@@ -1,4 +1,5 @@
 import React from "react";
+import { Layout } from "@/components";
 import { useSpring, animated } from "react-spring";
 import classNames from "classnames";
 import styles from "./MainStatistics.module.less";
@@ -34,7 +35,11 @@ const MainStatisticsItem = ({ value, name, isLast }) => {
 
 const MainStatistics = ({ dataSource = data }) => {
   return (
-    <div className={styles.mainStatistics}>
+    <Layout.HorizontalLayout
+      options={{ repeat: { count: 3, value: "30%" } }}
+      className={styles.mainStatistics}
+      gap="5.6%"
+    >
       {dataSource.map((item, index) => (
         <MainStatisticsItem
           key={item.name}
@@ -43,7 +48,7 @@ const MainStatistics = ({ dataSource = data }) => {
           isLast={index === dataSource.length - 1}
         />
       ))}
-    </div>
+    </Layout.HorizontalLayout>
   );
 };
 

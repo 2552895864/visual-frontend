@@ -1,45 +1,40 @@
 .statisticsOverview {
-  display   : flex;
-  margin-top: 15px;
-  width     : 872px;
+  width      : 90%;
+  padding-top: 22px;
 
-  div {
-    width: 50%;
+  p {
+    margin-bottom: 0;
+  }
 
-    p {
-      margin-bottom: 0;
-    }
+  .name {
+    color      : #fff;
+    font-size  : 24px;
+    font-family: Source Han Sans CN;
+    font-weight: 400;
+    line-height: 18px;
+    position   : relative;
+  }
 
-    .name {
-      color      : #fff;
-      font-size  : 24px;
-      font-family: Source Han Sans CN;
-      font-weight: 400;
-      line-height: 18px;
-      position   : relative;
-    }
+  .name::after {
+    content   : '';
+    width     : 24px;
+    height    : 3px;
+    background: #FFC47F;
+    position  : absolute;
+    bottom    : -19px;
+    left      : 0;
+  }
 
-    .name::after {
-      content   : '';
-      width     : 24px;
-      height    : 3px;
-      background: #FFC47F;
-      position  : absolute;
-      bottom    : -14px;
-      left      : 0;
-    }
+  .value {
+    font-size  : 44px;
+    font-family: Source Han Sans CN;
+    font-weight: bold;
+    color      : #1EC2FF;
+    line-height: 44px;
+    margin-top : 27px;
 
-    .value {
-      font-size  : 44px;
-      font-family: Source Han Sans CN;
-      font-weight: bold;
-      color      : #1EC2FF;
-      line-height: 44px;
-      margin-top : 18px;
-
-      span:nth-child(2) {
-        font-size: 24px;
-      }
+    span:nth-child(2) {
+      font-size: 24px;
     }
   }
 }

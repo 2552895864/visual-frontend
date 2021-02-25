@@ -1,82 +1,6 @@
 .tradeValue {
   width : 100%;
-  height: 610px;
-
-  .tradeValueLayout {
-    margin-top: 20px;
-
-    .top {
-      display       : flex;
-      position      : relative;
-
-      .radialBar {
-        width : 257px;
-        height: 257px;
-      }
-
-      .legend {
-        position             : absolute;
-        right                : 0;
-        display              : grid;
-        grid-template-columns: repeat(1, auto);
-        grid-template-rows   : repeat(3, auto);
-        grid-row-gap         : 50px;
-      }
-    }
-
-
-    .bottom {
-      margin-top: 50px;
-      height    : 246px;
-
-      .groupedBar {
-        width : 100%;
-        height: 100%;
-      }
-    }
-  }
-
-  // .legendItem {
-  //   display    : flex;
-  //   align-items: center;
-
-  //   .icon {
-  //     width          : 37px;
-  //     height         : 37px;
-  //     border-radius  : 50%;
-  //     display        : flex;
-  //     justify-content: center;
-  //     align-items    : center;
-
-  //     .iconInner {
-  //       width        : 20px;
-  //       height       : 20px;
-  //       border-radius: 50%;
-  //     }
-  //   }
-
-  //   .info {
-  //     margin-left: 9px;
-
-  //     .value {
-  //       font-size  : 20px;
-  //       font-family: PangMenZhengDao-3;
-  //       font-weight: 400;
-  //       color      : #FFFFFF;
-  //       line-height: 15px;
-  //     }
-
-  //     .name {
-  //       margin-top : 8px;
-  //       font-size  : 14px;
-  //       line-height: 14px;
-  //       font-family: Source Han Sans CN;
-  //       font-weight: 400;
-  //       color      : #E0FCFF;
-  //       opacity    : 0.5;
-  //     }
-  //   }
-  // }
+  height: 100%;
 
   .icon {
     width          : 37px;
@@ -91,5 +15,36 @@
       height       : 20px;
       border-radius: 50%;
     }
+  }
+}
+
+.radialBar {
+  width : 100%;
+  height: 100%;
+}
+
+.radialBarLegend {
+  padding: 10px 0px;
+}
+
+.radialBarLegendItem {
+  justify-content: flex-end;
+}
+
+.groupedBarLayout {
+  width   : 100%;
+  height  : 100%;
+  position: relative;
+
+  .groupedBarLegend {
+    position: absolute;
+    height  : 15px;
+    right   : 0;
+    width   : 27%;
+  }
+
+  .groupedBar {
+    width : 100%;
+    height: 100%;
   }
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { CircleFlag } from "react-circle-flags";
-import { ModuleContainer } from "@/components";
+import { ModuleContainer, BaseTable as Table } from "@/components";
 import styles from "./Country.module.less";
 
 const data = [
@@ -11,39 +11,51 @@ const data = [
   { countryName: "意大利", countryNameAbbr: "it", value: "9,126,185" },
 ];
 
-const CountryItem = ({ abbr, name, value }) => {
-  return (
-    <div className={styles.countryItem}>
-      <div className={styles.countryIcon}>
+const Country = ({ dataSource = data }) => {
+  const columns = [
+    {
+      title: "国旗",
+      dataIndex: "countryNameAbbr",
+      key: "countryNameAbbr",
+      render: (value) => (
         <CircleFlag
-          countryCode={abbr}
-          height="33"
+          countryCode={value}
+          height="35"
           className={styles.countryIconContent}
         />
-      </div>
-      <div className={styles.countryName}>{name}</div>
-      <div className={styles.value}>{value}</div>
-    </div>
-  );
-};
-
-const Country = ({ dataSource = data }) => {
+      ),
+      width: "12%",
+    },
+    {
+      title: "区域名称",
+      dataIndex: "countryName",
+      key: "countryName",
+      render: (value) => <div className={styles.countryName}>{value}</div>,
+      width: "70%",
+    },
+    {
+      title: "货值",
+      dataIndex: "value",
+      key: "value",
+      render: (value) => <div className={styles.value}>{value}</div>,
+    },
+  ];
   return (
     <ModuleContainer
-      title="热门贸易国家"
-      titleEn="Popular trading country"
+      title="热门贸易国家/地区"
+      titleEn="Hot trading countries/regions"
       className={styles.country}
+      contentPadding={[10, 0, 0, 0]}
     >
-      <div className={styles.countryLayout}>
-        {dataSource.map((item) => (
-          <CountryItem
-            key={item.countryName}
-            abbr={item.countryNameAbbr}
-            name={item.countryName}
-            value={item.value}
-          />
-        ))}
-      </div>
+      <Table
+        columns={columns}
+        dataSource={dataSource}
+        showHeader={false}
+        bordered={false}
+        rowHeight="48px"
+        rowPadding={0}
+        rowKey="countryNameAbbr"
+      />
     </ModuleContainer>
   );
 };
