@@ -6,9 +6,10 @@ import {
   ModuleContainer,
 } from "@/components";
 import intl from "react-intl-universal";
+import getChartOption from "./options/pie";
 import { useInterval } from "@/hooks";
 import { CumulativeValue, ProgressBar, LineChart, EchartPie } from "./modules";
-import { SquareGridData } from "./mock";
+import { SquareGridData, mockPie } from "./mock";
 import styles from "./index.module.less";
 
 const CebcPort = () => {
@@ -99,7 +100,11 @@ const CebcPort = () => {
             placement="left"
             className={styles.distribution}
           >
-            <EchartPie className={styles.pie}></EchartPie>
+            <EchartPie
+              className={styles.pie}
+              data={mockPie}
+              getChartOption={getChartOption}
+            ></EchartPie>
           </ModuleContainer>
           <ModuleContainer
             key="单量和货值变化趋势"
