@@ -10,37 +10,37 @@ import Railway from "@/pages/Railway";
 const routes = [
   {
     path: "/",
-    name: "整体对外贸易",
+    name: "湖北外资外贸全景",
     component: ForeignTrade,
   },
   {
     path: "/mxGoods",
-    name: "货物进出口",
+    name: "进出口大数据监测",
     component: MxGoods,
   },
   {
     path: "/cbec",
-    name: "跨境电商",
+    name: "跨境电商数据大盘",
     component: Cbec,
   },
   {
     path: "/cbecProvince",
-    name: "跨境电商(省)",
+    name: "跨境电商数据大盘-省",
     component: CbecProvince,
   },
   {
     path: "/cbecPort",
-    name: "跨境电商检测-口岸",
+    name: "跨境电商数据大盘-口岸",
     component: CbecPort,
   },
   {
     path: "/intro",
-    name: "介绍",
+    name: "湖北单一窗口",
     component: Intro,
   },
   {
     path: "/railway",
-    name: "铁路运输",
+    name: "铁路运输智能监测",
     component: Railway,
   },
   // {
