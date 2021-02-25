@@ -1,5 +1,5 @@
 import { Chart, registerShape } from "@antv/g2";
-const barColor = ["l(90) 0:#2adbf5 1:#476df4", "l(90) 0:#f1cb34 1:#c5a113"];
+const barColor = ["l(90) 0:#9BEBFF 1:#00B4F7", "l(90) 0:#84AAFF 1:#4979FF"];
 
 export default function initChart({ containerId: container, data, duration }) {
   function getFillAttrs(cfg) {
