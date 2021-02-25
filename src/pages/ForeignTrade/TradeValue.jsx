@@ -1,28 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   ModuleContainer,
   RadialBar,
   Statistic,
   GroupedBar,
+  Layout,
+  Legend,
+  Radio,
 } from "@/components";
 import { TRADE_COLOR_LIST } from "@/constants";
 import styles from "./TradeValue.module.less";
 
 const data = {
-  amountOfIncrease: [
-    { term: "2020年贸易货值涨幅", count: 82, max: 100, showValue: "82%" },
-    { term: "2019年贸易货值涨幅", count: 67, max: 100, showValue: "67%" },
-    { term: "2018年贸易货值涨幅", count: 57, max: 100, showValue: "57%" },
-  ],
-  barData: [
-    { date: "2020", value: 34000, type: "series1" },
-    { date: "2019", value: 80005, type: "series1" },
-    { date: "2018", value: 100003, type: "series1" },
-    { date: "2020", value: 31000, type: "series2" },
-    { date: "2019", value: 42005, type: "series2" },
-    { date: "2018", value: 260003, type: "series2" },
-  ],
+  value: {
+    amountOfIncrease: [
+      { term: "2020年贸易货值涨幅", count: 82, max: 100, showValue: "82%" },
+      { term: "2019年贸易货值涨幅", count: 67, max: 100, showValue: "67%" },
+      { term: "2018年贸易货值涨幅", count: 57, max: 100, showValue: "57%" },
+    ],
+    barData: [
+      { date: "2020", value: 34000, type: "series1" },
+      { date: "2019", value: 80005, type: "series1" },
+      { date: "2018", value: 100003, type: "series1" },
+      { date: "2020", value: 31000, type: "series2" },
+      { date: "2019", value: 42005, type: "series2" },
+      { date: "2018", value: 260003, type: "series2" },
+    ],
+  },
+  count: {
+    amountOfIncrease: [
+      { term: "2020年贸易货值涨幅", count: 45, max: 100, showValue: "45%" },
+      { term: "2019年贸易货值涨幅", count: 12, max: 100, showValue: "12%" },
+      { term: "2018年贸易货值涨幅", count: 77, max: 100, showValue: "77%" },
+    ],
+    barData: [
+      { date: "2020", value: 43000, type: "series1" },
+      { date: "2019", value: 60005, type: "series1" },
+      { date: "2018", value: 130003, type: "series1" },
+      { date: "2020", value: 13000, type: "series2" },
+      { date: "2019", value: 24005, type: "series2" },
+      { date: "2018", value: 360003, type: "series2" },
+    ],
+  },
 };
+
+const { HorizontalLayout, VerticalLayout } = Layout;
 const Icon = ({ index }) => {
   const color = TRADE_COLOR_LIST[index];
   return (
@@ -41,7 +63,8 @@ const Icon = ({ index }) => {
 };
 
 const TradeValue = ({ dataSource = data }) => {
-  const { amountOfIncrease, barData } = dataSource;
+  const [showData, setShowData] = useState(dataSource.value);
+  const { amountOfIncrease = [], barData = [] } = showData;
   const getRadialBarColor = amountOfIncrease.reduce((prev, cur, index) => {
     const color = TRADE_COLOR_LIST[index];
     prev[cur.term] = {
@@ -60,14 +83,27 @@ const TradeValue = ({ dataSource = data }) => {
     },
   };
 
+  const getType = (value) => {
+    setShowData(dataSource[value]);
+  };
+
   return (
     <ModuleContainer
       title="贸易货值详情"
       titleEn="Details of trade value"
       className={styles.tradeValue}
+      extra={
+        <Radio
+          options={[
+            { label: "货值", value: "value" },
+            { label: "单量", value: "count" },
+          ]}
+          getType={getType}
+        />
+      }
     >
-      <div className={styles.tradeValueLayout}>
-        <div className={styles.top}>
+      <VerticalLayout options={["56%", "44%"]}>
+        <HorizontalLayout options={["60%", "40%"]}>
           <RadialBar
             className={styles.radialBar}
             colors={getRadialBarColor}
@@ -75,22 +111,31 @@ const TradeValue = ({ dataSource = data }) => {
             lineWidth={12}
             padding={0}
             innerRadius={0.3}
-            radius={1}
+            radius={0.9}
           />
-          <div className={styles.legend}>
+          <Layout.VerticalLayout
+            options={{ repeat: { count: 2, value: "auto" } }}
+            className={styles.radialBarLegend}
+          >
             {amountOfIncrease.map((item, index) => (
               <Statistic
+                className={styles.radialBarLegendItem}
                 key={item.term}
                 icon={<Icon index={index} />}
                 title={item.term}
                 value={item.showValue}
                 infoGap={8}
+                iconGap={9}
                 reverse
               />
             ))}
-          </div>
-        </div>
-        <div className={styles.bottom}>
+          </Layout.VerticalLayout>
+        </HorizontalLayout>
+        <div className={styles.groupedBarLayout}>
+          <Legend
+            legend={["货值", "单量"]}
+            className={styles.groupedBarLegend}
+          />
           <GroupedBar
             data={barData}
             yAxisLabel={axisLabelStyle}
@@ -100,7 +145,7 @@ const TradeValue = ({ dataSource = data }) => {
             size={16}
           />
         </div>
-      </div>
+      </VerticalLayout>
     </ModuleContainer>
   );
 };

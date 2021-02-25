@@ -1,5 +1,5 @@
 import React from "react";
-import { ModuleContainer, Statistic, RingProcess } from "@/components";
+import { ModuleContainer, Statistic, RingProcess, Layout } from "@/components";
 import { RATE_PIE_COLOR_LIST } from "@/constants";
 import styles from "./CbecData.module.less";
 
@@ -13,11 +13,16 @@ const data = [
 const CbecData = ({ dataSource = data }) => {
   return (
     <ModuleContainer
-      title="跨境电商数据"
-      titleEn="Cross-border e-commerce data"
+      title="进出口贸易额和业务量"
+      titleEn="Import and export trade volume and business volume"
       className={styles.cbecData}
+      contentPadding={[13, 0, 0, 0]}
     >
-      <div className={styles.cbecDataLayout}>
+      <Layout.NormalLayout
+        rowsOptions={{ repeat: { count: 2, value: "auto" } }}
+        columnsOptions={{ repeat: { count: 2, value: "auto" } }}
+        rowsGap="29px"
+      >
         {dataSource.map((item, index) => (
           <Statistic
             icon={
@@ -35,7 +40,7 @@ const CbecData = ({ dataSource = data }) => {
             infoGap={19}
           />
         ))}
-      </div>
+      </Layout.NormalLayout>
     </ModuleContainer>
   );
 };
