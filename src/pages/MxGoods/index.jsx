@@ -10,14 +10,17 @@ import {
   BreathingLights,
   Statistic,
   Popup,
+  FlashingPoint,
 } from "./modules";
 import { axisConfig, extra, multiAreaConfig } from "./options/area";
+import getPoints from "./options/getPoints";
 import mockAreaData from "./mock/area";
 import styles from "./index.module.less";
 
 const MxGoods = () => {
   const popupRef = useRef();
   const [popupVisibility, setPopupVisibility] = useState(false);
+
   const handleOpenPopup = () => {
     setPopupVisibility(true);
     nextTick(() => {
@@ -34,10 +37,10 @@ const MxGoods = () => {
     <>
       <PageContainer
         className={classnames({
+          [styles.container]: true,
           [styles.blur]: popupVisibility,
         })}
       >
-        <div className={styles.map}></div>
         <div className={styles.layout}>
           <div className={styles.left}>
             <div className={styles.statistic}>
@@ -86,6 +89,16 @@ const MxGoods = () => {
             </ModuleContainer>
           </div>
           <div className={styles.middle}>
+            <div className={styles.map}>
+              {getPoints().map((props, index) => (
+                <FlashingPoint
+                  key={index}
+                  className={styles.points}
+                  {...props}
+                ></FlashingPoint>
+              ))}
+            </div>
+
             <div className={styles.overview}>
               <Overview></Overview>
             </div>
@@ -99,7 +112,7 @@ const MxGoods = () => {
               className={styles.rankingImport}
             >
               <div className={styles.table}>
-                <Table theme="blue"></Table>
+                <Table theme="blue" duration={10000} delay={3000}></Table>
               </div>
             </ModuleContainer>
             <ModuleContainer
@@ -110,7 +123,7 @@ const MxGoods = () => {
               className={styles.rankingExport}
             >
               <div className={styles.table}>
-                <Table theme="blue"></Table>
+                <Table theme="blue" duration={10000} delay={5500}></Table>
               </div>
               <div className={styles.breathingLights}>
                 <BreathingLights></BreathingLights>

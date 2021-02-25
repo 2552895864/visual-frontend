@@ -74,7 +74,7 @@ function ProgressBar({ data = mockData }) {
       dispatch({ type: "changeDirection", payload: "right" });
     }
     dispatch({ type: "move" });
-  }, 3000);
+  }, 6000);
   const labels = ["申报", "托运", "审单", "查验", "放行"];
   return (
     <div className={styles.container}>

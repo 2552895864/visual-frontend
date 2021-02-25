@@ -31,7 +31,7 @@
   z-index: 100;
   &::before {
     content: "";
-    transition: 3s all ease-out;
+    transition: 3s all cubic-bezier(0, 0.12, 0, 0.99);
     position: absolute;
     bottom: 30px;
     left: 50%;
@@ -44,7 +44,7 @@
 .label {
   position: absolute;
   opacity: 0;
-  transition: 3s opacity ease-out;
+  transition: 3s opacity cubic-bezier(0, 0.12, 0, 0.99);
   width: 40px;
   height: 19px;
   line-height: 19px;
@@ -135,7 +135,7 @@
   content: "";
   position: absolute;
   z-index: 1000;
-  transition: 3s left ease-out;
+  transition: 3s left cubic-bezier(0, 0.12, 0, 0.99);
   top: 0;
   transform: translate(-50%, -50%);
   width: 17px;
