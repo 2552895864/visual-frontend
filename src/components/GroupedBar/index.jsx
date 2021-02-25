@@ -21,6 +21,7 @@ const initChart = (
     yAxisLabel = null,
     xAxisLabel = null,
     size = 16,
+    marginRatio = 0,
   },
   id
 ) => {
@@ -105,7 +106,7 @@ const initChart = (
     .adjust([
       {
         type: "dodge",
-        marginRatio: 0,
+        marginRatio,
       },
     ]);
   chart.legend(false);

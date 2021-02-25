@@ -54,7 +54,7 @@ const CebcPort = () => {
     dispatch({ type: "update" });
   }, 6000);
   return (
-    <PageContainer className={styles.container}>
+    <PageContainer className={styles.container} title="跨境电商数据大盘">
       <div className={styles.layout}>
         <div className={styles.left}>
           <div className={styles.square}>

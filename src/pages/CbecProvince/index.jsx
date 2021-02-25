@@ -25,7 +25,7 @@ const Left = () => {
 
 const CbecProvince = () => {
   return (
-    <PageContainer className={styles.coverPageContainer}>
+    <PageContainer className={styles.coverPageContainer} title="跨境电商数据大盘">
       <div className={styles.cbecProvinceLayout}>
         <div className={styles.left}>
           <Left />

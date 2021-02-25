@@ -8,17 +8,24 @@ import styles from "./MapStreamer.module.less";
 
 const getPosition = ({ x, y }) => ({ bottom: `${y}px`, left: `${x}px` });
 
-const StreamerItem = ({ position, height, city, count, isWeak, rank = 9 }) => {
+const StreamerItem = ({
+  position,
+  height,
+  city,
+  content,
+  isWeak,
+  rank = 9,
+}) => {
   const [bodyHeight, setBodyHeight] = useState(0);
   const streamerItemClass = classNames(styles.streamerItem, {
     [styles.streamerItemWeak]: isWeak,
   });
 
-  const countAnimation = useSpring({
-    from: { num: 0 },
-    to: { num: count },
-    delay: 1000,
-  });
+  // const countAnimation = useSpring({
+  //   from: { num: 0 },
+  //   to: { num: count },
+  //   delay: 1000,
+  // });
   const rankAnimation = useSpring({
     from: { num: 0 },
     to: { num: rank },
@@ -39,9 +46,16 @@ const StreamerItem = ({ position, height, city, count, isWeak, rank = 9 }) => {
         {rankAnimation.num.interpolate((x) => x.toFixed(0))}
       </animated.div>
       <div className={styles.value}>
-        <animated.div className={styles.count}>
-          {countAnimation.num.interpolate((x) => x.toFixed(0))}
-        </animated.div>
+        {Array.isArray(content) ? (
+          <ul className={styles.count}>
+            {content.map((i) => (
+              <li>{i}</li>
+            ))}
+          </ul>
+        ) : (
+          <div className={styles.noneCount}>暂无</div>
+        )}
+
         <div className={styles.city}>{city}</div>
       </div>
       <div
@@ -55,12 +69,6 @@ const StreamerItem = ({ position, height, city, count, isWeak, rank = 9 }) => {
 const MapStreamer = () => {
   const [selectedCity, setSelectedCity] = useState("");
   const [cityWeak, setCityWeak] = useState(false);
-  // const getPosition = (event) => {
-  //   const x = event.clientX - 623;
-  //   const y = 700 - (event.clientY - 146);
-  //   console.log("y:", y, " x:", x);
-  // };
-
   useEffect(() => {
     let pubsub = Pubsub.subscribe("MapClick", (msg, data) => {
       const { city, show } = data;
@@ -72,17 +80,14 @@ const MapStreamer = () => {
     };
   }, []);
   return (
-    <div
-      className={styles.mapStreamer}
-      // onClick={getPosition}
-    >
+    <div className={styles.mapStreamer}>
       {cityPositionOfHubei.map((p) => (
         <StreamerItem
           key={p.city}
           position={p.position}
           city={p.city}
-          height={200}
-          count={123}
+          height={p.height}
+          content={p.content}
           isWeak={cityWeak && selectedCity !== p.city}
         />
       ))}
