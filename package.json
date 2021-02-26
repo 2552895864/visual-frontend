@@ -77,8 +77,6 @@
     "classnames": "^2.2.6",
     "echarts": "4.9.0",
     "echarts-for-react": "^2.0.16",
-    "rc-queue-anim": "^1.8.5",
-    "rc-texty": "^0.2.0",
     "gsap": "^3.6.0",
     "pubsub-js": "^1.9.3",
     "react": "^17.0.1",
