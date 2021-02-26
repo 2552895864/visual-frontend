@@ -46,7 +46,8 @@ const Growth = ({ dataSource = data }) => {
   };
   const yAxisLabel = {
     labelStyle: xAxisLabel.labelStyle,
-    formatter: (value) => `${value * 100}%`,
+    title:'增长率',
+    formatter: (value) => `${(value * 100).toFixed(2)}%`,
   };
   return (
     <ModuleContainer

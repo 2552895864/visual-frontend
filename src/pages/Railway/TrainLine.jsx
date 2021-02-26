@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import styles from "./TrainLine.module.less";
 import trainIcon from "@/assets/railway/train.png";
 const temp = [
@@ -9,25 +9,25 @@ const temp = [
   { left: "500px", top: "325px" },
 ];
 const TrainLine = () => {
-  const [position, setPosition] = useState({ left: null, top: null });
-  useEffect(() => {
-    document.onclick = function (event) {
-      setPosition({
-        left: event.clientX,
-        top: event.clientY,
-      });
-      console.log({
-        left: event.clientX,
-        top: event.clientY,
-      });
-    };
-  }, []);
+  // const [position, setPosition] = useState({ left: null, top: null });
+  // useEffect(() => {
+  //   document.onclick = function (event) {
+  //     setPosition({
+  //       left: event.clientX,
+  //       top: event.clientY,
+  //     });
+  //     console.log({
+  //       left: event.clientX,
+  //       top: event.clientY,
+  //     });
+  //   };
+  // }, []);
   return (
     <div className={styles.trainLine}>
       {temp.map((position, index) => (
         <img key={index} src={trainIcon} alt="train" style={{ ...position }} />
       ))}
-      <img src={trainIcon} alt="train" style={{ ...position }} />
+      {/* <img src={trainIcon} alt="train" style={{ ...position }} /> */}
     </div>
   );
 };
