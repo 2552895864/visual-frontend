@@ -327,7 +327,7 @@ function Area(props) {
     if (chartRef.current.views && chartRef.current.views.length) {
       const chart = chartRef.current.views[1];
       let current = {};
-      if (props.multipleLines.length > 0) {
+      if (props.multipleLines && props.multipleLines.length > 0) {
         const data = props.multipleLines[0].data;
         current = data[dataIndex % data.length];
       } else {
@@ -335,7 +335,7 @@ function Area(props) {
       }
       const point = chart.hideTooltip().getXY(current);
       chart.showTooltip(point);
-      if (props.multipleLines.length > 0) {
+      if (props.multipleLines && props.multipleLines.length > 0) {
         const data = props.multipleLines[0].data;
         setDataIndex((dataIndex + 1) % data.length);
       } else {
