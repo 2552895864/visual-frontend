@@ -53,6 +53,8 @@ const Business = ({ dataSource = data }) => {
         dataSource={dataSource}
         headerClassName={styles.tableHeader}
         rowKey="id"
+        size={4}
+        delay={800}
       />
     </ModuleContainer>
   );

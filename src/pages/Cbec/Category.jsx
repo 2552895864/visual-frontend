@@ -40,9 +40,10 @@ const Category = ({ dataSource = data }) => {
         dataSource={dataSource}
         bordered={false}
         headerClassName={styles.tableHeader}
-        rowHeight="40px"
         rowClassName={() => styles.row}
         rowKey="id"
+        tdPadding={0}
+        size={5}
       />
     </ModuleContainer>
   );
