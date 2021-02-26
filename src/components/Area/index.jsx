@@ -1,4 +1,5 @@
 import { Chart } from "@antv/g2";
+import { useInterval } from "src/hooks";
 import { useState, useEffect, useRef } from "react";
 import classnames from "classnames";
 import moment from "moment";
@@ -311,6 +312,7 @@ function Area(props) {
     [styles.container]: true,
     [props.className]: props.className,
   });
+  const [dataIndex, setDataIndex] = useState(0);
   const containerId = uuidv4();
   const chartRef = useRef();
   // CDM
@@ -321,7 +323,26 @@ function Area(props) {
       chart.destroy();
     };
   }, []);
-
+  useInterval(() => {
+    if (chartRef.current.views && chartRef.current.views.length) {
+      const chart = chartRef.current.views[1];
+      let current = {};
+      if (props.multipleLines.length > 0) {
+        const data = props.multipleLines[0].data;
+        current = data[dataIndex % data.length];
+      } else {
+        current = props.data[dataIndex % props.data.length];
+      }
+      const point = chart.hideTooltip().getXY(current);
+      chart.showTooltip(point);
+      if (props.multipleLines.length > 0) {
+        const data = props.multipleLines[0].data;
+        setDataIndex((dataIndex + 1) % data.length);
+      } else {
+        setDataIndex((dataIndex + 1) % props.data.length);
+      }
+    }
+  }, props.duration || 6000);
   return <div id={containerId} className={containerClass}></div>;
 }
 
