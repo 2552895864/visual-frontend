@@ -17,18 +17,25 @@ const mockData = [
 function LineChart({ data = mockData, className, duration = 5000 }) {
   const chartRef = useRef(null);
   const [index, setIndex] = useState(0);
+  const [inner, setInner] = useState(data);
   const containerId = uuidv4();
   const containerClass = classnames(styles.container, {
     [className]: className,
   });
   // CDM
   useEffect(() => {
-    const chart = initChart({ containerId, data, duration });
+    const chart = initChart({ containerId, data: inner, duration });
     chartRef.current = chart;
     return () => {
       chart.destroy();
     };
   }, []);
+  useEffect(() => {
+    if (data !== inner) {
+      chartRef.current.changeData(data);
+      setInner(data);
+    }
+  }, [data]);
   useInterval(() => {
     const point = chartRef.current
       .hideTooltip()

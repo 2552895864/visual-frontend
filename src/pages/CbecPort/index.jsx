@@ -7,9 +7,15 @@ import {
 } from "@/components";
 import intl from "react-intl-universal";
 import getChartOption from "./options/pie";
-import { useInterval } from "@/hooks";
+// import { useInterval } from "@/hooks";
 import { CumulativeValue, ProgressBar, LineChart, EchartPie } from "./modules";
-import { SquareGridData, mockPie, mockTable1, mockTable2 } from "./mock";
+import {
+  SquareGridData,
+  mockPie,
+  mockTable1,
+  mockTable2,
+  mockLine,
+} from "./mock";
 import PubSub from "pubsub-js";
 import { pubsubKey } from "src/config";
 import styles from "./index.module.less";
@@ -17,35 +23,35 @@ import styles from "./index.module.less";
 const CebcPort = () => {
   const reducer = (state, { type, payload }) => {
     switch (type) {
-      case "init":
+      case "update":
         return {
           ...state,
-          SquareGridData: SquareGridData,
+          SquareGridData: SquareGridData[payload],
+          pieData: mockPie,
+          table1Data: mockTable1[payload],
+          table2Data: mockTable2[payload],
+          lineData: mockLine[payload],
         };
-      // case "update":
-      //   return {
-      //     ...state,
-      //     SquareGridData: Object.keys(state.SquareGridData).reduce(
-      //       (acc, key) => ({
-      //         ...acc,
-      //         [key]: state.SquareGridData[key] * 1.0001,
-      //       }),
-      //       {}
-      //     ),
-      //   };
       default:
         return state;
     }
   };
-  const [state, dispatch] = useReducer(reducer, {});
+  const [state, dispatch] = useReducer(reducer, {
+    SquareGridData: SquareGridData["武邮快件"],
+    pieData: mockPie,
+    table1Data: mockTable1["武邮快件"],
+    table2Data: mockTable2["武邮快件"],
+    lineData: mockLine["武邮快件"],
+  });
 
   //CDM
   useEffect(() => {
     const pubSub_token = PubSub.subscribe(
       pubsubKey.portChange,
-      function (t, m) {}
+      function (t, m) {
+        dispatch({ type: "update", payload: m });
+      }
     );
-    dispatch({ type: "init" });
     return () => {
       PubSub.unsubscribe(pubSub_token);
     };
@@ -68,7 +74,11 @@ const CebcPort = () => {
             className={styles.importTop10}
           >
             <div className={styles.list}>
-              <Table duration={10000} delay={3000} data={mockTable1}></Table>
+              <Table
+                duration={10000}
+                delay={3000}
+                data={state.table1Data}
+              ></Table>
             </div>
           </ModuleContainer>
           <ModuleContainer
@@ -79,7 +89,11 @@ const CebcPort = () => {
             className={styles.exportTop10}
           >
             <div className={styles.list}>
-              <Table duration={10000} delay={5500} data={mockTable2}></Table>
+              <Table
+                duration={10000}
+                delay={5500}
+                data={state.table2Data}
+              ></Table>
             </div>
           </ModuleContainer>
         </div>
@@ -112,9 +126,10 @@ const CebcPort = () => {
           >
             <EchartPie
               className={styles.pie}
-              data={mockPie}
+              data={state.pieData}
               getChartOption={getChartOption}
               duration={10000}
+              initDuration={0}
             ></EchartPie>
           </ModuleContainer>
           <ModuleContainer
@@ -124,7 +139,10 @@ const CebcPort = () => {
             placement="left"
             className={styles.trends}
           >
-            <LineChart className={styles.line}></LineChart>
+            <LineChart
+              className={styles.line}
+              data={state.lineData}
+            ></LineChart>
           </ModuleContainer>
         </div>
       </div>

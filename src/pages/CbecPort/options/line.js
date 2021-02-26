@@ -77,14 +77,13 @@ export default function initChart({ containerId: container, data, duration }) {
   chart.data(data);
   chart.scale({
     counts: {
-      min: 150,
-      max: 400,
       nice: true,
+      min: 0,
       alias: "单量",
     },
     value: {
-      min: 15000,
-      max: 40000,
+      nice: true,
+      min: 0,
       alias: "货值",
     },
     time: {
