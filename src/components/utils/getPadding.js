@@ -1,6 +1,6 @@
 export default function getPadding(contentPadding) {
   let padding = "";
-  if (contentPadding) {
+  if (contentPadding !== null || contentPadding !== undefined) {
     if (Array.isArray(contentPadding)) {
       padding = contentPadding.map((i) => `${i}px`).join(" ");
     }

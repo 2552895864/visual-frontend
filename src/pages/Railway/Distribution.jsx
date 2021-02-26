@@ -3,10 +3,10 @@ import { ModuleContainer, BaseTable as Table } from "@/components";
 import styles from "./Distribution.module.less";
 
 const data = [];
-for (let i = 0; i < 5; i++) {
+for (let i = 0; i < 14; i++) {
   data.push({
     id: i,
-    destination: "马拉",
+    destination: `${i}马拉`,
     rate: "32.45%",
     count: "94,242,294",
     value: "1,423,854",
@@ -51,6 +51,8 @@ const Distribution = ({ dataSource = data }) => {
         dataSource={dataSource}
         headerClassName={styles.tableHeader}
         rowKey="id"
+        size={5}
+        delay={1000}
       />
     </ModuleContainer>
   );

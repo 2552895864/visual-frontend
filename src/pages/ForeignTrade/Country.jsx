@@ -38,6 +38,7 @@ const Country = ({ dataSource = data }) => {
       dataIndex: "value",
       key: "value",
       render: (value) => <div className={styles.value}>{value}</div>,
+      textAlign: "right",
     },
   ];
   return (
@@ -53,8 +54,9 @@ const Country = ({ dataSource = data }) => {
         showHeader={false}
         bordered={false}
         rowHeight="48px"
-        rowPadding={0}
+        tdPadding={0}
         rowKey="countryNameAbbr"
+        size={5}
       />
     </ModuleContainer>
   );

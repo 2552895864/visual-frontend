@@ -10,7 +10,7 @@ const mockData = [
     destinationCountry: "中国",
     goodsSource: "韩国",
     count: Number(42516).toLocaleString(),
-    cycle: "",
+    cycle: "12",
   },
   {
     key: 1,
@@ -19,7 +19,7 @@ const mockData = [
     destinationCountry: "中国",
     goodsSource: "新西兰",
     count: Number(156230).toLocaleString(),
-    cycle: "",
+    cycle: "12",
   },
   {
     key: 2,
@@ -28,7 +28,7 @@ const mockData = [
     destinationCountry: "中国",
     goodsSource: "日本",
     count: Number(15200).toLocaleString(),
-    cycle: "",
+    cycle: "10",
   },
 ];
 
