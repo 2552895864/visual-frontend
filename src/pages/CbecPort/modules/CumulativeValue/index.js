@@ -11,19 +11,20 @@ function CumulativeValue({ value = 27663528 }) {
   useEffect(() => {
     const valueStrs = `${value}`.split("");
     refs.forEach((item, index) => item.setFront(valueStrs[index]));
-  }, [value, refs]);
-  const tick = () => {
-    const newVal = val + Math.round(Math.random() * 10000);
+  }, []);
+  const flip = () => {
     const FrontStrs = `${val}`.split("");
-    const BackStrs = `${newVal}`.split("");
+    const BackStrs = `${value}`.split("");
     refs.forEach((item, index) => {
       if (FrontStrs[index] !== BackStrs[index]) {
         item.flipDown(FrontStrs[index], BackStrs[index]);
       }
     });
-    setVal(newVal);
+    setVal(value);
   };
-  useInterval(tick, 1000);
+  useEffect(() => {
+    flip();
+  }, [value]);
   return (
     <div className={styles.value}>
       <div className={styles.content}>

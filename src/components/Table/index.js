@@ -23,7 +23,43 @@ const iconMap = {
   },
 };
 
-function Table({ theme = "gold", duration = 5000, delay = 0 }) {
+const mockData = [
+  {
+    name: "索尼A7R4 全画幅微单",
+    type: "进口",
+    country: "德国",
+    value: 1325357,
+    srcIndex: "shuma",
+  },
+  {
+    name: "欧乐B电动牙刷",
+    type: "进口",
+    country: "日本",
+    value: 31325357,
+    srcIndex: "priyongpin",
+  },
+  {
+    name: "福特Focus RS",
+    type: "进口",
+    country: "美国",
+    value: 23425357,
+    srcIndex: "luntai",
+  },
+  {
+    name: "海底捞火锅",
+    type: "出口",
+    country: "中本",
+    value: 23425357,
+    srcIndex: "pfood",
+  },
+];
+
+function Table({
+  theme = "gold",
+  data = mockData,
+  duration = 5000,
+  delay = 0,
+}) {
   const box1Ref = useRef();
   const box2Ref = useRef();
 
@@ -63,86 +99,39 @@ function Table({ theme = "gold", duration = 5000, delay = 0 }) {
   useEffect(() => {
     box1Ref.current.style.left = 0;
   });
+
+  const getData = (theme) =>
+    data.map((item) => ({ ...item, src: iconMap[theme][item.srcIndex] }));
   return (
     <div className={styles.tableContainer}>
       <table ref={box1Ref} className={styles.table}>
         <tbody>
-          <tr style={{ marginLeft: -300 }}>
-            <td>
-              <img src={iconMap[theme].shuma} alt="shuma" />
-            </td>
-            <td>索尼A7R4 全画幅微单</td>
-            <td>进口</td>
-            <td>日本</td>
-            <td>1,325,357</td>
-          </tr>
-          <tr>
-            <td>
-              <img src={iconMap[theme].priyongpin} alt="priyongpin" />
-            </td>
-            <td>欧乐B电动牙刷</td>
-            <td>进口</td>
-            <td>德国</td>
-            <td>31,325,357</td>
-          </tr>
-          <tr>
-            <td>
-              <img src={iconMap[theme].luntai} alt="luntai" />
-            </td>
-            <td>福特Focus RS</td>
-            <td>进口</td>
-            <td>美国</td>
-            <td>23,425,357</td>
-          </tr>
-          <tr>
-            <td>
-              <img src={iconMap[theme].pfood} alt="pfood" />
-            </td>
-            <td>海底捞火锅</td>
-            <td>出口</td>
-            <td>中本</td>
-            <td>23,425,357</td>
-          </tr>
+          {getData(theme).map(({ src, name, type, country, value }, index) => (
+            <tr style={index === 0 ? { marginLeft: -300 } : {}}>
+              <td>
+                <img src={src} alt="" />
+              </td>
+              <td>{name}</td>
+              <td>{type}</td>
+              <td>{country}</td>
+              <td>{value}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
       <table ref={box2Ref} style={{ left: 0 }} className={styles.table}>
         <tbody>
-          <tr style={{ marginLeft: "-18.75rem" }}>
-            <td>
-              <img src={iconMap[theme].shuma} alt="shuma" />
-            </td>
-            <td>索尼A7R4 全画幅微单</td>
-            <td>进口</td>
-            <td>日本</td>
-            <td>1,325,357</td>
-          </tr>
-          <tr>
-            <td>
-              <img src={iconMap[theme].priyongpin} alt="priyongpin" />
-            </td>
-            <td>欧乐B电动牙刷</td>
-            <td>进口</td>
-            <td>德国</td>
-            <td>31,325,357</td>
-          </tr>
-          <tr>
-            <td>
-              <img src={iconMap[theme].luntai} alt="luntai" />
-            </td>
-            <td>福特Focus RS</td>
-            <td>进口</td>
-            <td>美国</td>
-            <td>23,425,357</td>
-          </tr>
-          <tr>
-            <td>
-              <img src={iconMap[theme].pfood} alt="pfood" />
-            </td>
-            <td>海底捞火锅</td>
-            <td>出口</td>
-            <td>中本</td>
-            <td>23,425,357</td>
-          </tr>
+          {getData(theme).map(({ src, name, type, country, value }, index) => (
+            <tr style={index === 0 ? { marginLeft: "-18.75rem" } : {}}>
+              <td>
+                <img src={src} alt="" />
+              </td>
+              <td>{name}</td>
+              <td>{type}</td>
+              <td>{country}</td>
+              <td>{value}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

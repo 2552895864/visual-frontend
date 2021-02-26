@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from "react";
 import echarts from "echarts";
 import { v4 as uuidv4 } from "uuid";
+import PubSub from "pubsub-js";
+import { pubsubKey } from "src/config";
 import { useInterval } from "src/hooks";
 
 const mockData = [
@@ -14,7 +16,7 @@ const mockData = [
 function EchartPie({
   className,
   getChartOption,
-  duration = 3000,
+  initDuration = 3000,
   data = mockData,
 }) {
   const chartRef = useRef(null);
@@ -30,19 +32,26 @@ function EchartPie({
 
   // CDM
   useEffect(() => {
-    const chart = initChart(data, duration);
+    const chart = initChart(data, initDuration);
     return () => {
       echarts.dispose(chart);
     };
-  }, [data, duration]);
+  }, [data, initDuration]);
+
   useInterval(() => {
+    const msgMap = {
+      0: "武邮快件",
+      1: "邮局海关",
+      2: "东湖综保",
+    };
+    PubSub.publish(pubsubKey.portChange, msgMap[dataIndex]);
     chartRef.current.dispatchAction({
       type: "pieSelect",
       seriesIndex: [0, 1],
       dataIndex,
     });
     setDataIndex((dataIndex + 1) % data.length);
-  }, duration);
+  }, 10000);
 
   return <div id={containerId} className={className}></div>;
 }

@@ -9,7 +9,9 @@ import intl from "react-intl-universal";
 import getChartOption from "./options/pie";
 import { useInterval } from "@/hooks";
 import { CumulativeValue, ProgressBar, LineChart, EchartPie } from "./modules";
-import { SquareGridData, mockPie } from "./mock";
+import { SquareGridData, mockPie, mockTable1, mockTable2 } from "./mock";
+import PubSub from "pubsub-js";
+import { pubsubKey } from "src/config";
 import styles from "./index.module.less";
 
 const CebcPort = () => {
@@ -20,29 +22,37 @@ const CebcPort = () => {
           ...state,
           SquareGridData: SquareGridData,
         };
-      case "update":
-        return {
-          ...state,
-          SquareGridData: Object.keys(state.SquareGridData).reduce(
-            (acc, key) => ({
-              ...acc,
-              [key]: state.SquareGridData[key] * 1.0001,
-            }),
-            {}
-          ),
-        };
+      // case "update":
+      //   return {
+      //     ...state,
+      //     SquareGridData: Object.keys(state.SquareGridData).reduce(
+      //       (acc, key) => ({
+      //         ...acc,
+      //         [key]: state.SquareGridData[key] * 1.0001,
+      //       }),
+      //       {}
+      //     ),
+      //   };
       default:
         return state;
     }
   };
   const [state, dispatch] = useReducer(reducer, {});
+
   //CDM
   useEffect(() => {
+    const pubSub_token = PubSub.subscribe(
+      pubsubKey.portChange,
+      function (t, m) {}
+    );
     dispatch({ type: "init" });
+    return () => {
+      PubSub.unsubscribe(pubSub_token);
+    };
   }, []);
-  useInterval(() => {
-    dispatch({ type: "update" });
-  }, 6000);
+  // useInterval(() => {
+  //   dispatch({ type: "update" });
+  // }, 6000);
   return (
     <PageContainer className={styles.container} title="跨境电商数据大盘">
       <div className={styles.layout}>
@@ -58,7 +68,7 @@ const CebcPort = () => {
             className={styles.importTop10}
           >
             <div className={styles.list}>
-              <Table duration={10000} delay={3000}></Table>
+              <Table duration={10000} delay={3000} data={mockTable1}></Table>
             </div>
           </ModuleContainer>
           <ModuleContainer
@@ -69,7 +79,7 @@ const CebcPort = () => {
             className={styles.exportTop10}
           >
             <div className={styles.list}>
-              <Table theme="blue" duration={10000} delay={5500}></Table>
+              <Table duration={10000} delay={5500} data={mockTable2}></Table>
             </div>
           </ModuleContainer>
         </div>
@@ -104,6 +114,7 @@ const CebcPort = () => {
               className={styles.pie}
               data={mockPie}
               getChartOption={getChartOption}
+              duration={10000}
             ></EchartPie>
           </ModuleContainer>
           <ModuleContainer
