@@ -109,7 +109,7 @@ const MxGoods = () => {
               key="货物进口热度排名"
               title="货物进口热度排名"
               titleEn="Ranking of import heat of goods"
-              placement="right"
+              // placement="right"
               className={styles.rankingImport}
             >
               <div className={styles.table}>
@@ -120,7 +120,7 @@ const MxGoods = () => {
               key="货物出口热度排名"
               title="货物出口热度排名"
               titleEn="Ranking of export heat of goods"
-              placement="right"
+              // placement="right"
               className={styles.rankingExport}
             >
               <div className={styles.table}>

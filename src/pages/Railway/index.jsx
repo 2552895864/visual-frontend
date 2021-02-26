@@ -6,11 +6,13 @@ import Growth from "./Growth";
 import RailwayBusiness from "./RailwayBusiness";
 import RailwayBusinessExtra from "./RailwayBusinessExtra";
 import Trend from "./Trend";
+import TrainLine from "./TrainLine";
 import styles from "./index.module.less";
 const { VerticalLayout, HorizontalLayout } = Layout;
 const Railway = () => {
   return (
     <PageContainer className={styles.railwayCover} title="铁路运输智能监测">
+      <TrainLine />
       <HorizontalLayout
         options={["70.5%", "25.5%"]}
         gap="4%"
