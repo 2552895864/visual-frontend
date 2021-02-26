@@ -1,7 +1,66 @@
-import React from "react";
+import React, { useEffect, useReducer } from "react";
 import classNames from "classnames";
+// import QueueAnim from "rc-queue-anim";
+import { Interval } from "@/utils";
 import getPadding from "../utils/getPadding";
 import styles from "./index.module.less";
+
+const useData = (dataSource, size, delay = 500) => {
+  const pageSize =
+    parseInt(dataSource.length / size) +
+    (dataSource.length % size === 0 ? 0 : 1);
+  const [state, dispatch] = useReducer(
+    (state, action) => {
+      switch (action.type) {
+        case "updatePage":
+          return {
+            ...state,
+            currentPage:
+              state.currentPage === pageSize ? 1 : state.currentPage + 1,
+          };
+        case "sendData":
+          const start = (state.currentPage - 1) * size;
+          const end = size * state.currentPage;
+          return {
+            ...state,
+            data: dataSource.slice(start, end),
+          };
+        case "sendEmptyData":
+          return {
+            ...state,
+            data: [],
+          };
+        default:
+          throw state;
+      }
+    },
+    { currentPage: 1, data: dataSource.slice(0, size) }
+  );
+
+  useEffect(() => {
+    const timer = new Interval();
+    timer.repeat(() => {
+      dispatch({ type: "updatePage" });
+    }, 5000);
+    return () => {
+      timer.clear();
+    };
+  }, []);
+
+  // useEffect(() => {
+  //   dispatch({ type: "sendEmptyData" });
+  //   let timer = setTimeout(() => {
+  //     dispatch({ type: "sendData" });
+  //   }, delay);
+  //   return () => {
+  //     clearTimeout(timer);
+  //   };
+  // }, [state.currentPage, delay]);
+  // return state.data;
+  const start = (state.currentPage - 1) * size;
+  const end = size * state.currentPage;
+  return dataSource.slice(start, end);
+};
 
 //FIXME:单元格省略
 //FIXME:设置宽度
@@ -19,6 +78,7 @@ import styles from "./index.module.less";
  * @param {string} className 表格类名
  * @param {CSSProperties} style 表格样式
  * @param {boolean} bordered 是否显示表格行边框
+ * @param {number} delay 动画延时
  */
 const Table = ({
   columns,
@@ -32,12 +92,15 @@ const Table = ({
   className,
   style,
   bordered = true,
+  size,
+  delay,
 }) => {
   const defaultTextAlign = "left";
   const tableClass = classNames(styles.table, className);
   const headerClass = classNames(styles.tableHead, headerClassName, {
     [styles.tableHeadHidden]: !showHeader,
   });
+  const showData = useData(dataSource, size, delay);
   return (
     <table className={tableClass} style={style}>
       <thead className={headerClass}>
@@ -56,7 +119,7 @@ const Table = ({
         </tr>
       </thead>
       <tbody className={styles.tableBody}>
-        {dataSource.map((record, index) => (
+        {showData.map((record, index) => (
           <tr
             className={classNames(styles.tableRow, {
               [rowClassName(record, index)]: rowClassName,
