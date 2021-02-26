@@ -37,31 +37,37 @@ const mockColumns = [
     dataIndex: "type",
     title: "类型",
     width: 45,
+    textAlign: "left",
   },
   {
     dataIndex: "sourceCountry",
     title: "企运国",
     width: 65,
+    textAlign: "left",
   },
   {
     dataIndex: "destinationCountry",
     title: "目的国",
     width: 62,
+    textAlign: "left",
   },
   {
     dataIndex: "goodsSource",
     title: "货源地",
     width: 65,
+    textAlign: "left",
   },
   {
     dataIndex: "count",
     title: "数量",
     width: 75,
+    textAlign: "right",
   },
   {
     dataIndex: "cycle",
     title: "周期",
     width: 45,
+    textAlign: "right",
   },
 ];
 
@@ -70,6 +76,7 @@ const getStyle = (columns, key) => {
   if (column) {
     return {
       width: column.width || 100,
+      textAlign: column.textAlign || "left",
     };
   }
   return {
@@ -87,10 +94,10 @@ function GoodsTable({ data = mockData, columns = mockColumns, className }) {
       <table className={styles.table}>
         <thead>
           <tr>
-            {columns.map(({ dataIndex, title, width }) => (
+            {columns.map(({ dataIndex, title, width, textAlign }) => (
               <th key={dataIndex} className={styles.th}>
                 <span className={styles.headerColumn}>
-                  <div style={{ width }}>{title}</div>
+                  <div style={{ width, textAlign }}>{title}</div>
                 </span>
               </th>
             ))}
