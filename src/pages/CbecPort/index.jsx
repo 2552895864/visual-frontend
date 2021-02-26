@@ -22,17 +22,17 @@ const CebcPort = () => {
           ...state,
           SquareGridData: SquareGridData,
         };
-      case "update":
-        return {
-          ...state,
-          SquareGridData: Object.keys(state.SquareGridData).reduce(
-            (acc, key) => ({
-              ...acc,
-              [key]: state.SquareGridData[key] * 1.0001,
-            }),
-            {}
-          ),
-        };
+      // case "update":
+      //   return {
+      //     ...state,
+      //     SquareGridData: Object.keys(state.SquareGridData).reduce(
+      //       (acc, key) => ({
+      //         ...acc,
+      //         [key]: state.SquareGridData[key] * 1.0001,
+      //       }),
+      //       {}
+      //     ),
+      //   };
       default:
         return state;
     }
@@ -50,9 +50,9 @@ const CebcPort = () => {
       PubSub.unsubscribe(pubSub_token);
     };
   }, []);
-  useInterval(() => {
-    dispatch({ type: "update" });
-  }, 6000);
+  // useInterval(() => {
+  //   dispatch({ type: "update" });
+  // }, 6000);
   return (
     <PageContainer className={styles.container} title="跨境电商数据大盘">
       <div className={styles.layout}>
