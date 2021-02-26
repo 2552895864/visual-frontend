@@ -8,7 +8,7 @@ export const LANG_EN_US_VALUE = "en-US";
 
 export const CBEC_PROVINCE_IMPORT = "import";
 export const CBEC_PROVINCE_EXPORT = "export";
-export const CBEC_PROVINCE_RANK_DEFAULT_WIDTH = 388;
+export const CBEC_PROVINCE_RANK_DEFAULT_WIDTH = 400;
 
 export const RATE_PIE_COLOR_LIST = [
   "#00C8FC",

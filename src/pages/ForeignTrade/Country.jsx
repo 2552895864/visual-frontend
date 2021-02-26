@@ -1,14 +1,14 @@
 import React from "react";
-import { CircleFlag } from "react-circle-flags";
-import { ModuleContainer, BaseTable as Table } from "@/components";
+
+import { ModuleContainer, Flag, BaseTable as Table } from "@/components";
 import styles from "./Country.module.less";
 
 const data = [
-  { countryName: "阿根廷", countryNameAbbr: "ag", value: "23,442,324" },
-  { countryName: "巴西", countryNameAbbr: "br", value: "43,126,859" },
-  { countryName: "德国", countryNameAbbr: "ge", value: "13,126,754" },
-  { countryName: "希腊", countryNameAbbr: "gr", value: "31,126,595" },
-  { countryName: "意大利", countryNameAbbr: "it", value: "9,126,185" },
+  { countryName: "瑞士", countryNameAbbr: "CHE", value: "23,442,324" },
+  { countryName: "法国", countryNameAbbr: "FRA", value: "43,126,859" },
+  { countryName: "美国", countryNameAbbr: "USA", value: "13,126,754" },
+  { countryName: "日本", countryNameAbbr: "JPN", value: "31,126,595" },
+  { countryName: "新加坡", countryNameAbbr: "SGP", value: "9,126,185" },
 ];
 
 const Country = ({ dataSource = data }) => {
@@ -17,13 +17,7 @@ const Country = ({ dataSource = data }) => {
       title: "国旗",
       dataIndex: "countryNameAbbr",
       key: "countryNameAbbr",
-      render: (value) => (
-        <CircleFlag
-          countryCode={value}
-          height="35"
-          className={styles.countryIconContent}
-        />
-      ),
+      render: (value) => <Flag countryCode={value} />,
       width: "12%",
     },
     {

@@ -24,19 +24,28 @@ for (let i = 0; i < 10; i++) {
 
 const ItemCard = ({
   item: { type, enterprise, portName, status },
-  isHead = false,
   isHighlight = false,
+  width,
 }) => {
   const itemCardClass = classnames(styles.itemCardContainer, {
-    [styles.itemHeadContainer]: isHead,
     [styles.highlight]: isHighlight,
   });
   return (
     <div className={itemCardClass}>
-      <span>{type}</span>
-      <span>{enterprise}</span>
-      <span>{portName}</span>
-      <span style={{ color: "#f1cb34" }}>{status}</span>
+      <div>{type}</div>
+      <div>{enterprise}</div>
+      <div>{portName}</div>
+      <div style={{ color: "#f1cb34" }}>{status}</div>
+    </div>
+  );
+};
+
+const ItemHeadCard = ({ options }) => {
+  return (
+    <div className={styles.itemHeadContainer}>
+      {options.map((i) => (
+        <div key={i.name} style={i.style}>{i.name}</div>
+      ))}
     </div>
   );
 };
@@ -89,14 +98,22 @@ const Status = ({
       className={styles.status}
     >
       <div className={styles.statusLayout}>
-        <ItemCard
-          isHead={true}
-          item={{
-            type: "进口类型",
-            enterprise: "申报企业",
-            portName: "口岸名称",
-            status: "状态",
-          }}
+        <ItemHeadCard
+          options={[
+            {
+              name: "进口类型",
+              style: { width: "135px", paddingLeft: "30px" },
+            },
+            {
+              name: "申报企业",
+              style: { width: "135px", paddingLeft: "22px" },
+            },
+            {
+              name: "口岸名称",
+              style: { width: "135px", paddingLeft: "78px" },
+            },
+            { name: "状态", style: { width: "135px", paddingLeft: "70px" } },
+          ]}
         />
         <div className={styles.slider}>
           <Slider {...settings}>

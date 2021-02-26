@@ -12,15 +12,15 @@ const defaultData = [
 
 const defaultColors = {
   test1: {
-    backgroundColor: "rgba(104,233,252,.5)",
+    backgroundColor: "rgba(104,233,252,0.1)",
     foregroundColor: "rgb(104,233,252)",
   },
   test2: {
-    backgroundColor: "rgba(37,85,235,.5)",
+    backgroundColor: "rgba(37,85,235,0.1)",
     foregroundColor: "rgb(37,85,235)",
   },
   test3: {
-    backgroundColor: "rgba(238,168,74,.5)",
+    backgroundColor: "rgba(238,168,74,0.1)",
     foregroundColor: "rgb(238,168,74)",
   },
 };
