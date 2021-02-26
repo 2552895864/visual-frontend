@@ -8,8 +8,8 @@ const MapDot = () => {
   return (
     <div className={styles.mapDot}>
       <img src={oneDot} alt="one" className={styles.one} />
-      <img src={twoDot} alt="one" className={styles.two} />
-      <img src={threeDot} alt="one" className={styles.three} />
+      {/* <img src={twoDot} alt="one" className={styles.two} />
+      <img src={threeDot} alt="one" className={styles.three} /> */}
     </div>
   );
 };

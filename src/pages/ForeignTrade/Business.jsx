@@ -28,7 +28,7 @@ const Business = ({ dataSource = data }) => {
       <Area
         data={dataSource}
         className={styles.area}
-        axis={{ x: axisLabelStyle, y: axisLabelStyle }}
+        axis={{ x: axisLabelStyle, y: { ...axisLabelStyle, title: "货值" } }}
         padding={[10, 6, 10, 25]}
         shape={{ line: "smooth", area: "smooth" }}
         areaColor={{ source: "#00B4F7", target: "#00B4F700" }}
