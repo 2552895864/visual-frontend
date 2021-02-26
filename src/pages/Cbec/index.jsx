@@ -15,6 +15,7 @@ const Cbec = () => {
     <PageContainer
       className={styles.coverPageContainer}
       title="跨境电商数据大盘"
+      hsl={false}
     >
       <HorizontalLayout
         options={["46.5%", "50%"]}
