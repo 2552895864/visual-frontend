@@ -27,6 +27,7 @@ const Trend = ({ dataSource = data }) => {
         className={styles.area}
         padding={[10, 8, 25, 35]}
         axis={axisConfig}
+        shape={{ line: "smooth", area: "smooth" }}
         multipleLines={buildMultipleLines(dataSource, multiAreaConfig)}
       />
     </ModuleContainer>

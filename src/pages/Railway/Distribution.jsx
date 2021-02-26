@@ -5,6 +5,7 @@ import styles from "./Distribution.module.less";
 const data = [];
 for (let i = 0; i < 5; i++) {
   data.push({
+    id: i,
     destination: "马拉",
     rate: "32.45%",
     count: "94,242,294",
@@ -23,11 +24,13 @@ const Distribution = ({ dataSource = data }) => {
       title: "占比",
       dataIndex: "rate",
       key: "rate",
+      textAlign: "right",
     },
     {
       title: "货运量",
       dataIndex: "count",
       key: "count",
+      textAlign: "right",
     },
     {
       title: "货值",
@@ -47,6 +50,7 @@ const Distribution = ({ dataSource = data }) => {
         columns={columns}
         dataSource={dataSource}
         headerClassName={styles.tableHeader}
+        rowKey="id"
       />
     </ModuleContainer>
   );
