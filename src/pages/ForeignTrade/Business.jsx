@@ -2,7 +2,15 @@ import React from "react";
 import { ModuleContainer, Area } from "@/components";
 import styles from "./Business.module.less";
 
-const Business = () => {
+const data = [
+  { Date: "2021-01-01", value: 120 },
+  { Date: "2021-02-02", value: 150 },
+  { Date: "2021-03-03", value: 250 },
+  { Date: "2021-04-04", value: 500 },
+  { Date: "2021-05-05", value: 620 },
+  { Date: "2021-06-06", value: 500 },
+];
+const Business = ({ dataSource = data }) => {
   const axisLabelStyle = {
     labelStyle: {
       fontSize: 14,
@@ -18,6 +26,7 @@ const Business = () => {
       className={styles.business}
     >
       <Area
+        data={dataSource}
         className={styles.area}
         axis={{ x: axisLabelStyle, y: axisLabelStyle }}
         padding={[10, 6, 10, 25]}
