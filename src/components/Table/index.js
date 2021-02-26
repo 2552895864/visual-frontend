@@ -107,7 +107,7 @@ function Table({
       <table ref={box1Ref} className={styles.table}>
         <tbody>
           {getData(theme).map(({ src, name, type, country, value }, index) => (
-            <tr style={index === 0 ? { marginLeft: -300 } : {}}>
+            <tr style={index === 0 ? { marginLeft: -300 } : {}} key={index}>
               <td>
                 <img src={src} alt="" />
               </td>
@@ -122,7 +122,10 @@ function Table({
       <table ref={box2Ref} style={{ left: 0 }} className={styles.table}>
         <tbody>
           {getData(theme).map(({ src, name, type, country, value }, index) => (
-            <tr style={index === 0 ? { marginLeft: "-18.75rem" } : {}}>
+            <tr
+              style={index === 0 ? { marginLeft: "-18.75rem" } : {}}
+              key={index}
+            >
               <td>
                 <img src={src} alt="" />
               </td>

@@ -8,20 +8,26 @@ function CumulativeValue({ value = 27663528 }) {
   const [val, setVal] = useState(value);
   const ref = useRef([]);
   const refs = ref.current;
+  /** 初始化数字牌 */
   useEffect(() => {
     const valueStrs = `${value}`.split("");
     refs.forEach((item, index) => item.setFront(valueStrs[index]));
   }, []);
   const flip = () => {
-    const FrontStrs = `${val}`.split("");
-    const BackStrs = `${value}`.split("");
-    refs.forEach((item, index) => {
-      if (FrontStrs[index] !== BackStrs[index]) {
-        item.flipDown(FrontStrs[index], BackStrs[index]);
-      }
-    });
-    setVal(value);
+    if (value !== val) {
+      const FrontStrs = `${val}`.split("");
+      const BackStrs = `${value}`.split("");
+      refs.forEach((item, index) => {
+        if (FrontStrs[index] !== BackStrs[index]) {
+          item.flipDown(FrontStrs[index], BackStrs[index]);
+        }
+      });
+      setVal(value);
+    }
   };
+  /**
+   * value更新时翻牌
+   */
   useEffect(() => {
     flip();
   }, [value]);
