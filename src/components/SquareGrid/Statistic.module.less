@@ -1,10 +1,15 @@
 .container {
   display: flex;
   box-sizing: border-box;
-  width: 50%;
   height: 102px;
   flex-direction: column;
   justify-content: space-evenly;
+  &:nth-child(2n + 1) {
+    width: 47.7%;
+  }
+  &:nth-child(2n) {
+    width: 52.3%;
+  }
 }
 
 .label {
@@ -23,13 +28,20 @@
 
 .number {
   font-size: 36px;
-  font-family: PangMenZhengDao-3;
   font-weight: 400;
   margin-right: 15px;
+  :global {
+    .odometer-value {
+      font-family: PangMenZhengDao-3 !important;
+    }
+    .odometer-digit-spacer {
+      font-family: PangMenZhengDao-3 !important;
+    }
+  }
 }
 
 .suffix {
   font-size: 22px;
-  font-family: PangMenZhengDao-3;
+  font-family: PangMenZhengDao-3 !important;
   font-weight: 400;
 }
