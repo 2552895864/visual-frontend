@@ -21,6 +21,7 @@ function EchartPie({
 }) {
   const chartRef = useRef(null);
   const [dataIndex, setDataIndex] = useState(0);
+  const [inner, setInner] = useState(data);
   const containerId = uuidv4();
 
   const initChart = (data, duration) => {
@@ -30,27 +31,41 @@ function EchartPie({
     return myChart;
   };
 
-  // CDM
-  useEffect(() => {
-    const chart = initChart(data, initDuration);
-    return () => {
-      echarts.dispose(chart);
-    };
-  }, [data, initDuration]);
-
-  useInterval(() => {
+  const tick = (chart) => {
     const msgMap = {
       0: "武邮快件",
       1: "邮局海关",
       2: "东湖综保",
     };
     PubSub.publish(pubsubKey.portChange, msgMap[dataIndex]);
-    chartRef.current.dispatchAction({
+    chart.dispatchAction({
       type: "pieSelect",
       seriesIndex: [0, 1],
       dataIndex,
     });
     setDataIndex((dataIndex + 1) % data.length);
+  };
+
+  // CDM
+  useEffect(() => {
+    const chart = initChart(inner, initDuration);
+    tick(chart);
+    return () => {
+      echarts.dispose(chart);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (inner !== data) {
+      chartRef.current.setOption(
+        getChartOption(chartRef.current, data, initDuration)
+      );
+      setInner(data);
+    }
+  }, [data]);
+
+  useInterval(() => {
+    tick(chartRef.current);
   }, 10000);
 
   return <div id={containerId} className={className}></div>;
