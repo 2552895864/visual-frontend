@@ -49,7 +49,7 @@ const StreamerItem = ({
         {Array.isArray(content) ? (
           <ul className={styles.count}>
             {content.map((i) => (
-              <li>{i}</li>
+              <li key={i}>{i}</li>
             ))}
           </ul>
         ) : (

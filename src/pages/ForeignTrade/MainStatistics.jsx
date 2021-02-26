@@ -15,7 +15,7 @@ const MainStatisticsItem = ({ value, name, isLast }) => {
     value,
     from: { value: value / 2 },
     delay: 1000,
-    config: { duration: 100000000 },
+    config: { duration: 10000000000 },
   });
 
   const mainStatisticsItemClass = classNames(styles.mainStatisticsItem, {

@@ -64,10 +64,10 @@ const RankItem = ({ dataSource: { name = "-", value, rate }, index }) => {
     <div className={styles.rankItem}>
       <div className={styles.name}>{name}</div>
       <div className={styles.bar}>
+        <div className={columnClass} style={{ width: barWidth }}></div>
         <animated.div className={styles.num}>
           {titleAnimation.num.interpolate((x) => x.toFixed(0))}
         </animated.div>
-        <div className={columnClass} style={{ width: barWidth }}></div>
       </div>
     </div>
   );

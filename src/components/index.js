@@ -14,3 +14,4 @@ export { default as Layout } from "./GridLayout";
 export { default as BaseTable } from "./BaseTable";
 export { default as Legend } from "./Legend";
 export { default as Radio } from "./Radio";
+export { default as Flag } from "./Flag";
