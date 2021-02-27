@@ -92,7 +92,7 @@ const CebcPort = () => {
   const l3Ref = useRef();
   const r1Ref = useRef();
   const r2Ref = useRef();
-  const containerPadding = [70, 54, 0, 54];
+  const containerPadding = [46, 54, 0, 54];
   const rowCount = 12;
   const rowHeight =
     (screenHeight - containerPadding[0] - containerPadding[2]) / rowCount;

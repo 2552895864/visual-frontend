@@ -18,9 +18,9 @@ const Menu = ({
 }) => {
   const [currentVisible, setCurrentVisible] = useState(visible);
   const onChangePage = (pathName) => {
+    PubSub.publish(pubsubKey.leaveAnimateKey, true);
     setCurrentVisible(false);
     delay(() => {
-      PubSub.publish(pubsubKey.leaveAnimateKey, true);
       push(pathName);
     }, animate.duration * 2000);
   };

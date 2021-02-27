@@ -59,6 +59,7 @@ function Table({
   data = mockData,
   duration = 5000,
   delay = 0,
+  rowHeight = 43,
 }) {
   const box1Ref = useRef();
   const box2Ref = useRef();
@@ -107,7 +108,11 @@ function Table({
       <table ref={box1Ref} className={styles.table}>
         <tbody>
           {getData(theme).map(({ src, name, type, country, value }, index) => (
-            <tr style={index === 0 ? { marginLeft: -300 } : {}} key={index}>
+            <tr
+              style={index === 0 ? { marginLeft: -300 } : {}}
+              height={rowHeight}
+              key={index}
+            >
               <td>
                 <img src={src} alt="" />
               </td>
@@ -125,6 +130,7 @@ function Table({
             <tr
               style={index === 0 ? { marginLeft: "-18.75rem" } : {}}
               key={index}
+              height={rowHeight}
             >
               <td>
                 <img src={src} alt="" />

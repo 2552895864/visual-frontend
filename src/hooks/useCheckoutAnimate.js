@@ -3,8 +3,8 @@ import PubSub from "pubsub-js";
 import gsap from "gsap";
 
 /**
- * 
- * @param {*} options 动画元素配置,refs：react ref数组，options：TweenValue动画配置 {refs:[ref1,ref2...],options:{}} 
+ *
+ * @param {*} options 动画元素配置,refs：react ref数组，options：TweenValue动画配置 {refs:[ref1,ref2...],options:{}}
  * eg:{ refs: [refl1, refl2, refl3], options: { x: "-500px", stagger: 0.5 } }
  * @param {*} commonTweenValue 通用动画配置
  * @param {*} message 离场通知FLag ,配合PubSub
@@ -29,7 +29,7 @@ export default function useCheckoutAnimate(options, commonTweenValue, message) {
       });
     });
   }, []);
-  
+
   useEffect(() => {
     const pubsub_token = PubSub.subscribe(message, function () {
       options.forEach((i) => {
