@@ -3,9 +3,10 @@ import { Drawer } from "antd";
 import classNames from "classnames";
 import delay from "lodash/delay";
 import { withRouter } from "react-router-dom";
-
+import PubSub from "pubsub-js";
 import menu from "@/routes/routes";
 import { MENU_TITLE } from "@/constants";
+import { pubsubKey, animate } from "@/config";
 
 import styles from "./Menu.module.less";
 
@@ -19,8 +20,9 @@ const Menu = ({
   const onChangePage = (pathName) => {
     setCurrentVisible(false);
     delay(() => {
+      PubSub.publish(pubsubKey.leaveAnimateKey, true);
       push(pathName);
-    }, 500);
+    }, animate.duration * 2000);
   };
 
   useEffect(() => {
